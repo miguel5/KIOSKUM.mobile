@@ -14,12 +14,12 @@ namespace KIOSKUM.mobile.Services
         {
             items = new List<Item>()
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Sandes de panado", Description="Pão; Panado de Frango; Alface" },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Baguete de Atum", Description="Pão; Atum; Maionaise; Alface" },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Baguete de Frango", Description="Pão; Frango; Maionaise; Alface" },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Tosta Mista", Description="Pão; Queijo; Fiambre" },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Panado em Prato", Description="Panado de Frango; Arroz; Alface; Tomate" },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Baguete de Delícias", Description="Pão; Delícias do Mar; Alface; Tomate" }
             };
         }
 

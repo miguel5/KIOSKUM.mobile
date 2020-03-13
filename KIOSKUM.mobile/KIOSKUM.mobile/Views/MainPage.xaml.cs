@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using KIOSKUM.mobile.Models;
 
 namespace KIOSKUM.mobile.Views
 {
@@ -13,6 +14,7 @@ namespace KIOSKUM.mobile.Views
         public MainPage()
         {
             InitializeComponent();
+
         }
     }
 }

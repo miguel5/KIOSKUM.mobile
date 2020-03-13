@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using KIOSKUM.mobile.Models;
 using KIOSKUM.mobile.Views;
 using KIOSKUM.mobile.ViewModels;
+using System.IO;
 
 namespace KIOSKUM.mobile.Views
 {
@@ -37,6 +38,7 @@ namespace KIOSKUM.mobile.Views
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
+
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
