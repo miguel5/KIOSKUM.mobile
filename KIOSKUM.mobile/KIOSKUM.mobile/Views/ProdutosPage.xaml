@@ -8,7 +8,7 @@
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="carrinho.png" />
+        <ToolbarItem IconImageSource="carrinho.png" Clicked="Carrinho_Clicked" />
     </ContentPage.ToolbarItems>
 
     <StackLayout Orientation="Vertical">
