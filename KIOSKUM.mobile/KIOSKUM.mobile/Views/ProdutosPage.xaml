@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KIOSKUM.mobile.Views.ProdutosPage"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="carrinho.png" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Orientation="Vertical">
+        <SearchBar x:Name="sbProcurar" Placeholder="Procurar..." TextChanged="Procurar_TextChanged"/>
+        <ListView x:Name="produtoLista" Margin="5" 
+                  HasUnevenRows="True" 
+                  IsGroupingEnabled="True"
+                  GroupDisplayBinding="{Binding Key}"
+                  SeparatorVisibility="Default" 
+                  SeparatorColor="Black">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell Text="{Binding Nome}" 
+                                       Detail="{Binding Preco, StringFormat='{}{0:} EUR'}" 
+                                       TextColor="Black" DetailColor="Blue"/>
+                </DataTemplate>
+                
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
