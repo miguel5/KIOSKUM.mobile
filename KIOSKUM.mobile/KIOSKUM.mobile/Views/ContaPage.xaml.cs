@@ -33,7 +33,8 @@ namespace KIOSKUM.mobile.Views
             if (e.Item == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            await Navigation.PushAsync(new EditarContaPage());
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
