@@ -19,6 +19,7 @@ namespace KIOSKUM.mobile.Views
         public NotificationsPage()
         {
             InitializeComponent();
+            Title = "Notificações";
 
             // Debug
             /*

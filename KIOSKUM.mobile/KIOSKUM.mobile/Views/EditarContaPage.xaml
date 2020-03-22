@@ -12,11 +12,13 @@
 
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <Label Text="Nome" FontSize="Medium" />
+            <Label Text="Nome" FontSize="Medium" TextColor="Black"/>
             <Entry Placeholder="Nome" />
-            <Label Text="Email" FontSize="Medium" />
+            <Label Text="Email" FontSize="Medium" TextColor="Black"/>
             <Entry Placeholder="Email"/>
-            <Label Text="Nova Password"/>
+            <Label Text="Telemovel" FontSize="Medium" TextColor="Black"/>
+            <Entry Placeholder="Telemovel"/>
+            <Label Text="Nova Password" FontSize="Medium" TextColor="Black"/>
             <Entry Placeholder="Password" IsPassword="True"/>
             <Entry Placeholder="Confirmar Password" IsPassword="True"/>
         </StackLayout>

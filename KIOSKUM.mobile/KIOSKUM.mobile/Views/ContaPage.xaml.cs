@@ -17,6 +17,7 @@ namespace KIOSKUM.mobile.Views
         public ContaPage()
         {
             InitializeComponent();
+            Title = "Conta";
 
             Items = new ObservableCollection<string>
             {
@@ -33,8 +34,9 @@ namespace KIOSKUM.mobile.Views
             if (e.Item == null)
                 return;
 
-            //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-            await Navigation.PushAsync(new EditarContaPage());
+           // await DisplayAlert("Item Tapped", e.Item.GetType().ToString() + "\n" + e.Item.ToString(), "OK");
+           if(e.Item.ToString().Equals("Editar Conta"))
+                await Navigation.PushAsync(new EditarContaPage());
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
