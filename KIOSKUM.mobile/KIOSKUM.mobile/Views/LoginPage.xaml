@@ -56,6 +56,12 @@
                 <Label Text="Forgot password" 
                         HorizontalOptions="Center" 
                         TextColor="{StaticResource primary}"/>
+
+                <Label Text="Email ou password inválidos!"
+                        x:Name="badlogin_label"
+                        HorizontalOptions="Center" 
+                        TextColor="{StaticResource primary}"
+                        IsVisible="False"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

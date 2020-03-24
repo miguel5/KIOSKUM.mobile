@@ -1,4 +1,6 @@
-﻿using KIOSKUM.mobile.Services;
+﻿using KIOSKUM.mobile.Models;
+using KIOSKUM.mobile.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,7 @@ namespace KIOSKUM.mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        readonly ClienteAPIService API = new ClienteAPIService();
         public LoginPage()
         {
             InitializeComponent();
@@ -25,10 +28,31 @@ namespace KIOSKUM.mobile.Views
             await Navigation.PushModalAsync(new SignUpPage());
         }
 
-        public void Login_Clicked(object sender, System.EventArgs e)
+        public async void Login_Clicked(object sender, System.EventArgs e)
         {
-            //Application.Current.MainPage = new MainPage();
-            //var text = email_entry.T
+            //Application.Current.MainPage = new MainPage();            // DEBUG
+            var email = email_entry.Text;
+            var password = password_entry.Text;
+
+            //Cliente cli =  await API.AuthenticateClient("lazaro.pinheiro1998@gmail.com", "123456");
+            //Cliente cli = await API.AuthenticateClient(email, password);
+            Tuple<Cliente,bool> resp = await API.AuthenticateClient(email, password);
+            var cli = resp.Item1;
+            var success = resp.Item2;
+
+            // Login falhou
+            if (!success)
+            {
+                badlogin_label.IsVisible = true;
+            }
+            // Login bem sucedido
+            else
+            {
+                badlogin_label.IsVisible = false;
+                await Navigation.PushModalAsync(new AboutPage());
+                Console.WriteLine(cli.Nome);
+                Console.WriteLine(cli.Token);
+            }
         }
     }
 }

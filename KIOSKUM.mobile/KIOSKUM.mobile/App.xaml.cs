@@ -1,20 +1,20 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 using KIOSKUM.mobile.Services;
 using KIOSKUM.mobile.Views;
+using KIOSKUM.mobile.Models;
 
 namespace KIOSKUM.mobile
 {
     public partial class App : Application
     {
+        public Cliente Cliente { get; set; }
 
         public App()
         {
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();                          // DEBUG
+            MainPage = new LoginPage();                          // DEBUG
         }
 
         protected override void OnStart()

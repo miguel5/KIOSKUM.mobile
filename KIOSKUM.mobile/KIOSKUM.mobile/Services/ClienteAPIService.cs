@@ -1,4 +1,5 @@
 ﻿using KIOSKUM.mobile.Models;
+using KIOSKUM.mobile.PostModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,12 @@ namespace KIOSKUM.mobile.Services
     class ClienteAPIService
     {
         readonly List<Cliente> Clientes;
-        private const string URL_auth = "http://kioskum.azurewebsites.net/api/cliente/autenticacao";
+        private const string URL_auth = "https://kioskum.azurewebsites.net/api/cliente/login";
         private HttpClient _client = new HttpClient();
 
         public ClienteAPIService()
         {
-            Clientes = this.GetItemsAsync().Result.ToList();
+
         }
 
         public async Task<IEnumerable<Cliente>> GetItemsAsync(bool forceRefresh = false)
@@ -55,14 +56,30 @@ namespace KIOSKUM.mobile.Services
         }
 
 
-        public async Task<Cliente> AuthenticateClient(string email, string password)
+        public async Task<Tuple<Cliente,bool>> AuthenticateClient(string email, string password)
         {
-            var cliente = new Cliente { Email = email, Password = password };
-            var content = JsonConvert.SerializeObject(cliente);
-            var response = await _client.PostAsync(URL_auth, new StringContent(content, Encoding.UTF8, "application/json"));
-            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+            try
+            {
+                var cliente = new LoginPostModel { Email = email, Password = password };
+                var content = JsonConvert.SerializeObject(cliente);
 
-            return JsonConvert.DeserializeObject<Cliente>(response.Content.ReadAsStringAsync().Result);
+                var response = await _client.PostAsync(URL_auth, new StringContent(content, Encoding.UTF8, "application/json"));
+                bool success = response.IsSuccessStatusCode;
+
+                if (success)
+                {
+                    Cliente cli = JsonConvert.DeserializeObject<Cliente>(await response.Content.ReadAsStringAsync());
+                    return new Tuple<Cliente,bool>(cli, success);
+                }
+                else
+                {
+                    return new Tuple<Cliente, bool>(new Cliente(), success);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }     
         }
     }
 }

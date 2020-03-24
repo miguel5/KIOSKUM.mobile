@@ -40,8 +40,6 @@ namespace KIOSKUM.mobile.Views
            else if (e.Item.ToString().Equals("Logout"))                    // DEBUG
             {
                 Console.WriteLine("Logout");
-                var foo = new ClienteAPIService();
-                var resp = foo.AuthenticateClient("lazaro.pinheiro1998@gmail.com", "123456");
             }
                 
 
