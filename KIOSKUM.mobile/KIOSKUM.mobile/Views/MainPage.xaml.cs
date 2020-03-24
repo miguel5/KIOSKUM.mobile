@@ -14,7 +14,6 @@ namespace KIOSKUM.mobile.Views
         public MainPage()
         {
             InitializeComponent();
-
         }
     }
 }

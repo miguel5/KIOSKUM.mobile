@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KIOSKUM.mobile.Services;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -34,9 +35,15 @@ namespace KIOSKUM.mobile.Views
             if (e.Item == null)
                 return;
 
-           // await DisplayAlert("Item Tapped", e.Item.GetType().ToString() + "\n" + e.Item.ToString(), "OK");
            if(e.Item.ToString().Equals("Editar Conta"))
                 await Navigation.PushAsync(new EditarContaPage());
+           else if (e.Item.ToString().Equals("Logout"))                    // DEBUG
+            {
+                Console.WriteLine("Logout");
+                var foo = new ClienteAPIService();
+                var resp = foo.AuthenticateClient("lazaro.pinheiro1998@gmail.com", "123456");
+            }
+                
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
