@@ -44,14 +44,16 @@ namespace KIOSKUM.mobile.Views
             if (!success)
             {
                 badlogin_label.IsVisible = true;
+                MainPage homePage = new MainPage();     // DEBUG
+                //App.Current.MainPage = homePage;
             }
             // Login bem sucedido
             else
             {
                 badlogin_label.IsVisible = false;
-                await Navigation.PushModalAsync(new AboutPage());
-                Console.WriteLine(cli.Nome);
-                Console.WriteLine(cli.Token);
+                App.Cliente = cli;
+                MainPage homePage = new MainPage();
+                App.Current.MainPage = homePage;
             }
         }
     }

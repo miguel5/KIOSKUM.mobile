@@ -14,7 +14,7 @@ namespace KIOSKUM.mobile.Services
         HttpClient Client = new HttpClient();
 
         public ProdutoAPIService() {
-            Produtos = this.GetItemsAsync().Result.ToList();
+            //Produtos = this.GetItemsAsync().Result.ToList();
         }
 
         public async Task<IEnumerable<Produto>> GetItemsAsync(bool forceRefresh = false)

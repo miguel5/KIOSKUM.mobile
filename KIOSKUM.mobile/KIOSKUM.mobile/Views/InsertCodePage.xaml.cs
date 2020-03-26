@@ -10,18 +10,18 @@ using Xamarin.Forms.Xaml;
 namespace KIOSKUM.mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SignUpPage : ContentPage
+    public partial class InsertCodePage : ContentPage
     {
-        public SignUpPage()
+        public InsertCodePage()
         {
             InitializeComponent();
         }
 
-        async void Register_Clicked(object sender, EventArgs e)
+        public void Register_Clicked(object sender, EventArgs e)
         {
             //await Navigation.PopModalAsync();
-            //Content = new InsertCodePage().Content;
-            await Navigation.PushModalAsync(new InsertCodePage(), false);
+            //Content = new AboutPage().Content;
+            App.Current.MainPage = new LoginPage();
         }
     }
 }

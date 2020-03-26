@@ -7,7 +7,7 @@ namespace KIOSKUM.mobile
 {
     public partial class App : Application
     {
-        public Cliente Cliente { get; set; }
+        public static Cliente Cliente { get; set; }
 
         public App()
         {
