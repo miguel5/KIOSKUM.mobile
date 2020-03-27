@@ -14,6 +14,7 @@ namespace KIOSKUM.mobile.Services
     {
         readonly List<Cliente> Clientes;
         private const string URL_auth = "https://kioskum.azurewebsites.net/api/cliente/login";
+        private const string URL_criar = "https://kioskum.azurewebsites.net/api/cliente/criar";
         private HttpClient _client = new HttpClient();
 
         public ClienteAPIService()
@@ -54,6 +55,25 @@ namespace KIOSKUM.mobile.Services
 
             return await Task.FromResult(true);
         }
+
+        public async Task<HttpResponseMessage> CriarConta(string nome, string email, int telemovel, string password)
+        {
+            try
+            {
+                var conta = new CriarContaPostModel { Nome = nome, Email = email, NumTelemovel = telemovel, Password = password };
+                var content = JsonConvert.SerializeObject(conta);
+                
+                var response = await _client.PostAsync(URL_criar, new StringContent(content, Encoding.UTF8, "application/json"));
+                bool success = response.IsSuccessStatusCode;
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+    
 
 
         public async Task<Tuple<Cliente,bool>> AuthenticateClient(string email, string password)

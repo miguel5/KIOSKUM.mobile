@@ -24,22 +24,26 @@
 
                 <Entry  Margin="20,0,20,0" 
                          HeightRequest="50" 
-                         Placeholder="Nome">
+                         Placeholder="Nome"
+                         Text="{Binding Conta.Nome}">
                 </Entry>
 
                 <Entry  Margin="20,0,20,0" 
                          HeightRequest="50" 
-                         Placeholder="Email">
+                         Placeholder="Email"
+                         Text="{Binding Conta.Email}">
                 </Entry>
 
                 <Entry  Margin="20,0,20,0" 
                          HeightRequest="50" 
-                         Placeholder="Telemóvel">
+                         Placeholder="Telemóvel"
+                         Text="{Binding Conta.NumTelemovel}">
                 </Entry>
 
                 <Entry Margin="20,0,20,0" 
                         HeightRequest="50" IsPassword="true"
-                        Placeholder="Password">
+                        Placeholder="Password"
+                        Text="{Binding Conta.Password}">
                 </Entry>
 
                 <Button Margin="20,0,20,0" 
@@ -49,6 +53,12 @@
                          Clicked="Register_Clicked"
                          BackgroundColor="Gray"
                          HorizontalOptions="FillAndExpand"/>
+
+                <Label Text="Informação Inválida"
+                        x:Name="invalidinfo_label"
+                        HorizontalOptions="Center"
+                        TextColor="{StaticResource primary}"
+                        IsVisible="False"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -30,12 +30,9 @@ namespace KIOSKUM.mobile.Views
 
         public async void Login_Clicked(object sender, System.EventArgs e)
         {
-            //Application.Current.MainPage = new MainPage();            // DEBUG
             var email = email_entry.Text;
             var password = password_entry.Text;
 
-            //Cliente cli =  await API.AuthenticateClient("lazaro.pinheiro1998@gmail.com", "123456");
-            //Cliente cli = await API.AuthenticateClient(email, password);
             Tuple<Cliente,bool> resp = await API.AuthenticateClient(email, password);
             var cli = resp.Item1;
             var success = resp.Item2;
@@ -45,7 +42,7 @@ namespace KIOSKUM.mobile.Views
             {
                 badlogin_label.IsVisible = true;
                 MainPage homePage = new MainPage();     // DEBUG
-                //App.Current.MainPage = homePage;
+                App.Current.MainPage = homePage;
             }
             // Login bem sucedido
             else

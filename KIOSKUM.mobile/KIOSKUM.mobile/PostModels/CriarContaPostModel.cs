@@ -4,9 +4,11 @@ using System.Text;
 
 namespace KIOSKUM.mobile.PostModels
 {
-    public class LoginPostModel
+    public class CriarContaPostModel
     {
+        public string Nome { get; set; }
         public string Email { get; set; }
+        public int NumTelemovel { get; set; }
         public string Password { get; set; }
     }
 }
