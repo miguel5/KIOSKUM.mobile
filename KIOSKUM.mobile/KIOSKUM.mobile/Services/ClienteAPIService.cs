@@ -21,7 +21,7 @@ namespace KIOSKUM.mobile.Services
 
         }
 
-        public async Task<HttpResponseMessage> CriarConta(string nome, string email, string telemovel, string password)
+        public async Task<HttpResponseMessage> CriarConta(string nome, string email, int telemovel, string password)
         {
             try
             {

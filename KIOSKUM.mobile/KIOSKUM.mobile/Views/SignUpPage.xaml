@@ -37,7 +37,7 @@
                 <Entry  Margin="20,0,20,0" 
                          HeightRequest="50" 
                          Placeholder="Telemóvel"
-                         Text="{Binding Conta.NumTelemovel}">
+                         Text="{Binding Conta.NumTelemovel, Mode=TwoWay, StringFormat='{}{0:#}'}">
                 </Entry>
 
                 <Entry Margin="20,0,20,0" 
