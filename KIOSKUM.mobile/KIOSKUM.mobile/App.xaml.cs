@@ -7,14 +7,14 @@ namespace KIOSKUM.mobile
 {
     public partial class App : Application
     {
-        public static Cliente Cliente { get; set; }
+        public static string AuthToken { get; set; }
 
         public App()
         {
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new LoginPage();                          // DEBUG
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

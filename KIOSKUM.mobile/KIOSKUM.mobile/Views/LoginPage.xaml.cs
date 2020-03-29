@@ -33,9 +33,7 @@ namespace KIOSKUM.mobile.Views
             var email = email_entry.Text;
             var password = password_entry.Text;
 
-            Tuple<Cliente,bool> resp = await API.AuthenticateClient(email, password);
-            var cli = resp.Item1;
-            var success = resp.Item2;
+            var success = API.AuthenticateClient(email, password).Result;
 
             // Login falhou
             if (!success)
@@ -48,7 +46,6 @@ namespace KIOSKUM.mobile.Views
             else
             {
                 badlogin_label.IsVisible = false;
-                App.Cliente = cli;
                 MainPage homePage = new MainPage();
                 App.Current.MainPage = homePage;
             }

@@ -12,7 +12,6 @@ namespace KIOSKUM.mobile.Services
 {
     class ClienteAPIService
     {
-        readonly List<Cliente> Clientes;
         private const string URL_auth = "https://kioskum.azurewebsites.net/api/cliente/login";
         private const string URL_criar = "https://kioskum.azurewebsites.net/api/cliente/criar";
         private HttpClient _client = new HttpClient();
@@ -22,41 +21,7 @@ namespace KIOSKUM.mobile.Services
 
         }
 
-        public async Task<IEnumerable<Cliente>> GetItemsAsync(bool forceRefresh = false)
-        {
-            try
-            {
-                string url = "https://kioskum.azurewebsites.net/api/Produto/Todos";
-                var response = await _client.GetStringAsync(url);
-                var clientes = JsonConvert.DeserializeObject<List<Cliente>>(response);
-                return clientes;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public async Task<bool> AddItemAsync(Cliente cliente)
-        {
-            Clientes.Add(cliente);
-
-            return await Task.FromResult(true);
-        }
-
-        public async Task<bool> UpdateItemAsync(Cliente cliente)
-        {
-
-            return await Task.FromResult(true);
-        }
-
-        public async Task<bool> DeleteItemAsync(string id)
-        {
-
-            return await Task.FromResult(true);
-        }
-
-        public async Task<HttpResponseMessage> CriarConta(string nome, string email, int telemovel, string password)
+        public async Task<HttpResponseMessage> CriarConta(string nome, string email, string telemovel, string password)
         {
             try
             {
@@ -76,7 +41,7 @@ namespace KIOSKUM.mobile.Services
     
 
 
-        public async Task<Tuple<Cliente,bool>> AuthenticateClient(string email, string password)
+        public async Task<bool> AuthenticateClient(string email, string password)
         {
             try
             {
@@ -86,15 +51,8 @@ namespace KIOSKUM.mobile.Services
                 var response = await _client.PostAsync(URL_auth, new StringContent(content, Encoding.UTF8, "application/json"));
                 bool success = response.IsSuccessStatusCode;
 
-                if (success)
-                {
-                    Cliente cli = JsonConvert.DeserializeObject<Cliente>(await response.Content.ReadAsStringAsync());
-                    return new Tuple<Cliente,bool>(cli, success);
-                }
-                else
-                {
-                    return new Tuple<Cliente, bool>(new Cliente(), success);
-                }
+                //Cliente cli = JsonConvert.DeserializeObject<Cliente>(await response.Content.ReadAsStringAsync());
+                return success;
             }
             catch (Exception ex)
             {
