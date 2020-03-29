@@ -47,5 +47,10 @@ namespace KIOSKUM.mobile.Views
                    group produto by produto.Categoria into grupos
                    select new ProdutosViewModel<string, Produto>(grupos.Key, grupos);
         }
+
+        async void Carrinho_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+        }
     }
 }

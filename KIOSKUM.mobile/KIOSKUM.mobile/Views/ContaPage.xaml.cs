@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KIOSKUM.mobile.Services;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace KIOSKUM.mobile.Views
         public ContaPage()
         {
             InitializeComponent();
+            Title = "Conta";
 
             Items = new ObservableCollection<string>
             {
@@ -33,7 +35,14 @@ namespace KIOSKUM.mobile.Views
             if (e.Item == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+           if(e.Item.ToString().Equals("Editar Conta"))
+                await Navigation.PushAsync(new EditarContaPage());
+           else if (e.Item.ToString().Equals("Logout"))
+            {
+                App.Current.MainPage = new LoginPage();
+                // TODO: Eliminar o objeto Cliente da classe App
+            }
+                
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

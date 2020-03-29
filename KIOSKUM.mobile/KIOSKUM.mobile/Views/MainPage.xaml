@@ -9,50 +9,37 @@
 
     <TabbedPage.Children>
         <NavigationPage Title="Produtos">
+            <x:Arguments>
+                <views:ProdutosPage />
+            </x:Arguments>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_feed.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
-            <x:Arguments>
-                <views:ProdutosPage />
-            </x:Arguments>
         </NavigationPage>
 
         <NavigationPage Title="Notificações">
+            <x:Arguments>
+                <views:NotificationsPage />
+            </x:Arguments>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_notifications.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
-            <x:Arguments>
-                <views:NotificationsPage />
-            </x:Arguments>
         </NavigationPage>
 
         <NavigationPage Title="Conta">
+            <x:Arguments>
+                <views:ContaPage />
+            </x:Arguments>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_conta.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
-            <x:Arguments>
-                <views:ContaPage />
-            </x:Arguments>
         </NavigationPage>
-        
-        <!--
-        <NavigationPage Title="About">
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_about.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
-            <x:Arguments>
-                <views:AboutPage />
-            </x:Arguments>
-        </NavigationPage>
-        -->
     </TabbedPage.Children>
     
 </TabbedPage>

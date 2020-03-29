@@ -5,34 +5,42 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="KIOSKUM.mobile.Views.ContaPage">
-  <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
-    
-    <!--Built in Cells-->
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <TextCell Text="{Binding .}" d:Text="{Binding .}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
-    
-    <!--Custom View Cells-->
-    <!--
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <StackLayout>
-            <Label Text="{Binding Text}" 
-                   d:Text="{Binding .}"
-                   Style="{DynamicResource ListItemTextStyle}" />
-            <Label Text="{Binding Detail}" 
-                   d:Text="Detail"
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-    -->
-  </ListView>
+
+    <ListView x:Name="MyListView"
+              ItemsSource="{Binding Items}"
+              ItemTapped="Handle_ItemTapped"
+              CachingStrategy="RecycleElement"
+              Margin="10">
+
+        <!--Built in Cells-->
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <!--<TextCell Text="{Binding .}" d:Text="{Binding .}" />-->
+                <ViewCell>
+                    <Label Text="{Binding .}" d:Text="{Binding .}" FontSize="Large" TextColor="Black"/>
+                </ViewCell>
+
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+
+        <!--Custom View Cells-->
+        <!--
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout>
+                <Label Text="{Binding Text}" 
+                       d:Text="{Binding .}"
+                       Style="{DynamicResource ListItemTextStyle}" />
+                <Label Text="{Binding Detail}" 
+                       d:Text="Detail"
+                       Style="{DynamicResource ListItemDetailTextStyle}"/>
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+        -->
+    </ListView>
+
 </ContentPage>
