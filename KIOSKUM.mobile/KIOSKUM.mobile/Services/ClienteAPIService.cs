@@ -21,20 +21,28 @@ namespace KIOSKUM.mobile.Services
 
         }
 
-        public async Task<HttpResponseMessage> CriarConta(string nome, string email, int telemovel, string password)
+        public async Task<ErrorsList> CriarConta(CriarContaPostModel conta)
         {
             try
             {
-                var conta = new CriarContaPostModel { Nome = nome, Email = email, NumTelemovel = telemovel, Password = password };
                 var content = JsonConvert.SerializeObject(conta);
-                
-                var response = await _client.PostAsync(URL_criar, new StringContent(content, Encoding.UTF8, "application/json"));
-                bool success = response.IsSuccessStatusCode;
 
-                return response;
+                var response = await _client.PostAsync(URL_criar, new StringContent(content, Encoding.UTF8, "application/json"));
+                Console.WriteLine("Resposta: " + response.Content.ReadAsStringAsync().Result);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return new ErrorsList();
+                }
+                else
+                {
+                    var erros = JsonConvert.DeserializeObject<ErrorsList>(response.Content.ReadAsStringAsync().Result);
+                    return erros;
+                }
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.StackTrace);
                 throw ex;
             }
         }
