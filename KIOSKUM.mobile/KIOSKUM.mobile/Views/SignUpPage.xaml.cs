@@ -20,7 +20,7 @@ namespace KIOSKUM.mobile.Views
 
         public void Register_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "RegisterClicked");
+            MessagingCenter.Send(this, "SignUpRegisterClicked");
 
         }
     }

@@ -59,7 +59,6 @@ namespace KIOSKUM.mobile.Services
                 var response = await _client.PostAsync(URL_auth, new StringContent(content, Encoding.UTF8, "application/json"));
                 bool success = response.IsSuccessStatusCode;
 
-                //Cliente cli = JsonConvert.DeserializeObject<Cliente>(await response.Content.ReadAsStringAsync());
                 return success;
             }
             catch (Exception ex)

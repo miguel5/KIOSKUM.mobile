@@ -13,7 +13,6 @@ namespace KIOSKUM.mobile.ViewModels
     {
         public ClienteAPIService API { get; set; }
         public CriarContaPostModel Conta { get; set; }
-        //public List<string> Erros { get; set; }
 
         private List<string> _erros;
         public List<string> Erros
@@ -28,7 +27,7 @@ namespace KIOSKUM.mobile.ViewModels
             Conta = new CriarContaPostModel();
             Erros = new List<string>();
 
-            MessagingCenter.Subscribe<SignUpPage>(this, "RegisterClicked", async (page) =>
+            MessagingCenter.Subscribe<SignUpPage>(this, "SignUpRegisterClicked", async (page) =>
             {
                 var erros = await API.CriarConta(Conta);
                 List<string> errosStr = new List<string>();

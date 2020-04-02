@@ -28,7 +28,7 @@ namespace KIOSKUM.mobile.Views
             await Navigation.PushModalAsync(new SignUpPage());
         }
 
-        public async void Login_Clicked(object sender, System.EventArgs e)
+        public void Login_Clicked(object sender, System.EventArgs e)
         {
             var email = email_entry.Text;
             var password = password_entry.Text;
