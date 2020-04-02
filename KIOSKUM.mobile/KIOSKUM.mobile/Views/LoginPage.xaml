@@ -26,14 +26,16 @@
                 <Entry  Margin="20,40,20,0" 
                          HeightRequest="50" 
                          Placeholder="Email"
-                         x:Name="email_entry">
+                         x:Name="email_entry"
+                         Text="{Binding Login.Email}">
                     
                 </Entry>
 
                 <Entry Margin="20,0,20,0" 
                         HeightRequest="50" IsPassword="true"
                         Placeholder="Password"
-                        x:Name="password_entry">
+                        x:Name="password_entry"
+                        Text="{Binding Login.Password}">
                     
                 </Entry>
 
@@ -57,11 +59,11 @@
                         HorizontalOptions="Center" 
                         TextColor="{StaticResource primary}"/>
 
-                <Label Text="Email ou password inválidos!"
+                <Label Text="Email ou password inválidos"
                         x:Name="badlogin_label"
                         HorizontalOptions="Center" 
                         TextColor="{StaticResource primary}"
-                        IsVisible="False"/>
+                        IsVisible="{Binding LabelVisible}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

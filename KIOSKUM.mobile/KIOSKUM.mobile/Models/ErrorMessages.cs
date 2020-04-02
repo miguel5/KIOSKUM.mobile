@@ -20,7 +20,8 @@ namespace KIOSKUM.mobile.Models
             {10, "<TODO>"},
             {11, "A conta já se encontra validada"},
             {12, "Email ou Password Incorreta"},
-            {13, "Erro de autenticação"}
+            {13, "Erro de autenticação"},
+            {20, "Preenchimento obrigatório de todos os campos" }
         };
     }
 }

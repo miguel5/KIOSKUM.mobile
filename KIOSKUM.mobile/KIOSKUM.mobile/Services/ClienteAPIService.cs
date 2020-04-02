@@ -37,6 +37,12 @@ namespace KIOSKUM.mobile.Services
                 else
                 {
                     var erros = JsonConvert.DeserializeObject<ErrorsList>(response.Content.ReadAsStringAsync().Result);
+
+                    if (!erros.ListaErros.Any())
+                    {
+                        erros.ListaErros.Add(20); // Adiciona erro 20 Campos de Preenchimento Obrigatorio
+                    }
+
                     return erros;
                 }
             }
@@ -49,11 +55,10 @@ namespace KIOSKUM.mobile.Services
     
 
 
-        public async Task<bool> AuthenticateClient(string email, string password)
+        public async Task<bool> AuthenticateClient(LoginPostModel cliente)
         {
             try
             {
-                var cliente = new LoginPostModel { Email = email, Password = password };
                 var content = JsonConvert.SerializeObject(cliente);
 
                 var response = await _client.PostAsync(URL_auth, new StringContent(content, Encoding.UTF8, "application/json"));
