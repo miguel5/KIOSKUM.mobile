@@ -12,7 +12,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="10" >
+            <StackLayout x:Name="EntryLayout" Spacing="10" >
                 <Label HeightRequest="110"  
                           HorizontalOptions="FillAndExpand" 
                           Text="KIOSK UM" 
@@ -37,7 +37,7 @@
                 <Entry  Margin="20,0,20,0" 
                          HeightRequest="50" 
                          Placeholder="Telemóvel"
-                         Text="{Binding Conta.NumTelemovel}">
+                         Text="{Binding Conta.NumTelemovel, Mode=TwoWay, StringFormat='{}{0:#}'}">
                 </Entry>
 
                 <Entry Margin="20,0,20,0" 
@@ -59,6 +59,20 @@
                         HorizontalOptions="Center"
                         TextColor="{StaticResource primary}"
                         IsVisible="False"/>
+
+                <ListView ItemsSource="{Binding Erros}"
+                          CachingStrategy="RecycleElement"
+                          HasUnevenRows = "true"
+                          HorizontalOptions="Center"
+                          SelectionMode="None"
+                          x:Name="ErrorsList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding .}" d:Text="{Binding .} " />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

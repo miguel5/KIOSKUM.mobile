@@ -1,5 +1,7 @@
 ﻿using KIOSKUM.mobile.Models;
+using KIOSKUM.mobile.PostModels;
 using KIOSKUM.mobile.Services;
+using KIOSKUM.mobile.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,10 +18,14 @@ namespace KIOSKUM.mobile.Views
     public partial class LoginPage : ContentPage
     {
         readonly ClienteAPIService API = new ClienteAPIService();
+        LoginViewModel ViewModel;
         public LoginPage()
         {
             InitializeComponent();
 
+            ViewModel = new LoginViewModel();
+
+            BindingContext = ViewModel;
         }
 
         async void Register_Clicked(object sender, System.EventArgs e)
@@ -28,27 +34,9 @@ namespace KIOSKUM.mobile.Views
             await Navigation.PushModalAsync(new SignUpPage());
         }
 
-        public async void Login_Clicked(object sender, System.EventArgs e)
+        public void Login_Clicked(object sender, System.EventArgs e)
         {
-            var email = email_entry.Text;
-            var password = password_entry.Text;
-
-            var success = API.AuthenticateClient(email, password).Result;
-
-            // Login falhou
-            if (!success)
-            {
-                badlogin_label.IsVisible = true;
-                MainPage homePage = new MainPage();     // DEBUG
-                App.Current.MainPage = homePage;
-            }
-            // Login bem sucedido
-            else
-            {
-                badlogin_label.IsVisible = false;
-                MainPage homePage = new MainPage();
-                App.Current.MainPage = homePage;
-            }
+            MessagingCenter.Send(this, "LoginClicked");
         }
     }
 }
