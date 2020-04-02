@@ -37,8 +37,6 @@ namespace KIOSKUM.mobile.ViewModels
                 if (!success)
                 {
                     LabelVisible = true;
-                    //MainPage homePage = new MainPage();     // DEBUG
-                    //App.Current.MainPage = homePage;
                 }
                 // Login bem sucedido
                 else
