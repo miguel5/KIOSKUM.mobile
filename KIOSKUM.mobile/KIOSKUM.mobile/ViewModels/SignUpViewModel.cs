@@ -34,7 +34,10 @@ namespace KIOSKUM.mobile.ViewModels
 
                 if (!erros.ListaErros.Any())
                 {
-                    await page.Navigation.PushModalAsync(new InsertCodePage());
+                    var viewModel = new InsertCodeViewModel();
+                    viewModel.ValidarConta = new ValidarContaPostModel { Email = Conta.Email };
+                    var validarConta = new ValidarContaPostModel { Email = Conta.Email };
+                    await page.Navigation.PushModalAsync(new InsertCodePage(new InsertCodeViewModel {ValidarConta = validarConta }));
                 }
 
                 else

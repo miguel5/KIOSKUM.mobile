@@ -10,10 +10,11 @@ using System.Threading.Tasks;
 
 namespace KIOSKUM.mobile.Services
 {
-    class ClienteAPIService
+    public class ClienteAPIService
     {
         private const string URL_auth = "https://kioskum.azurewebsites.net/api/cliente/login";
         private const string URL_criar = "https://kioskum.azurewebsites.net/api/cliente/criar";
+        private const string URL_confirmar = "https://kioskum.azurewebsites.net/api/cliente/confirmar";
         private HttpClient _client = new HttpClient();
 
         public ClienteAPIService()
@@ -28,7 +29,6 @@ namespace KIOSKUM.mobile.Services
                 var content = JsonConvert.SerializeObject(conta);
 
                 var response = await _client.PostAsync(URL_criar, new StringContent(content, Encoding.UTF8, "application/json"));
-                Console.WriteLine("Resposta: " + response.Content.ReadAsStringAsync().Result);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -70,6 +70,23 @@ namespace KIOSKUM.mobile.Services
             {
                 throw ex;
             }     
+        }
+
+        public async Task<bool> ValidateAccount(ValidarContaPostModel codigo)
+        {
+            try
+            {
+                var content = JsonConvert.SerializeObject(codigo);
+
+                var response = await _client.PostAsync(URL_confirmar, new StringContent(content, Encoding.UTF8, "application/json"));
+                bool success = response.IsSuccessStatusCode;
+
+                return success;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

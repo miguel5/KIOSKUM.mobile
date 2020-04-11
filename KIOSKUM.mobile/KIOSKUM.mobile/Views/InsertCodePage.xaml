@@ -27,7 +27,8 @@
                          HeightRequest="50"
                          WidthRequest="100"
                          Placeholder="Code"
-                         HorizontalTextAlignment="Center">
+                         HorizontalTextAlignment="Center"
+                        Text="{Binding ValidarConta.Codigo}">
                 </Entry>
 
                 <Button Margin="20,0,20,0" 
@@ -37,6 +38,12 @@
                          Clicked="Register_Clicked"
                          BackgroundColor= "{StaticResource primary}"
                          HorizontalOptions="FillAndExpand"/>
+
+                <Label Text="Erro"
+                        HorizontalOptions="Center" 
+                        TextColor="{StaticResource primary}"
+                        IsVisible="{Binding LabelVisible}"/>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

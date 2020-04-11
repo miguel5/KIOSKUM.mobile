@@ -5,7 +5,7 @@ using System.Text;
 
 namespace KIOSKUM.mobile.Models
 {
-    class ErrorsList
+    public class ErrorsList
     {
         [Required]
         public List<int> ListaErros { get; set; }
