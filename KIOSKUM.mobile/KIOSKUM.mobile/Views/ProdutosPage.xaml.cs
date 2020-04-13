@@ -25,10 +25,9 @@ namespace KIOSKUM.mobile.Views
             service = new ProdutoAPIService();
             AtualizaDados();
         }
-        private void AtualizaDados()
+        private async void AtualizaDados()
         {
-            //items = await service.GetItemsAsync();
-            items = new List<Produto>();
+            items = await service.GetItemsAsync();
             produtoLista.ItemsSource = Listar();
         }
         private void Procurar_TextChanged(object sender, TextChangedEventArgs e)
@@ -42,10 +41,10 @@ namespace KIOSKUM.mobile.Views
 
             if (!string.IsNullOrEmpty(filtro))
                 produtosFiltrados = items.Where(l => (l.Nome.ToLower().Contains(filtro.ToLower()))
-                                                        || l.Categoria.ToLower().Contains(filtro.ToLower()));
+                                                        || l.NomeCategoria.ToLower().Contains(filtro.ToLower()));
             return from produto in produtosFiltrados
                    orderby produto.Nome
-                   group produto by produto.Categoria into grupos
+                   group produto by produto.NomeCategoria into grupos
                    select new ProdutosViewModel<string, Produto>(grupos.Key, grupos);
         }
 

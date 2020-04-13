@@ -34,6 +34,12 @@ namespace KIOSKUM.mobile.Services
                 {
                     return new ErrorsList();
                 }
+                if(response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                {
+                    var erros = new ErrorsList();
+                    erros.ListaErros.Add(21);      // Adiciona erro 21 Erro do lado do servidor
+                    return erros;
+                }
                 else
                 {
                     var erros = JsonConvert.DeserializeObject<ErrorsList>(response.Content.ReadAsStringAsync().Result);

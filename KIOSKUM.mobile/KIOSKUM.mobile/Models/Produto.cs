@@ -8,20 +8,22 @@ namespace KIOSKUM.mobile.Models
     {
         public int Id { get; }
         public string Nome { get; set; }
-        public string Categoria { get; set; }
+        public string NomeCategoria { get; set; }
         public double Preco { get; set; }
         public IList<string> Ingredientes { get; set; }
         public IList<string> Alergenios { get; set; }
+        public string URL { get; set; }
 
 
-        public Produto(int IdProduto, string Nome, string Categoria, double Preco, IList<string> Ingredientes, IList<string> Alergenios)
+        public Produto(int IdProduto, string Nome, string NomeCategoria, double Preco, IList<string> Ingredientes, IList<string> Alergenios, string URL)
         {
             this.Id = IdProduto;
             this.Nome = Nome;
-            this.Categoria = Categoria;
+            this.NomeCategoria = NomeCategoria;
             this.Preco = Preco;
             this.Ingredientes = Ingredientes;
             this.Alergenios = Alergenios;
+            this.URL = URL;
         }
 
         public override int GetHashCode()
@@ -31,7 +33,7 @@ namespace KIOSKUM.mobile.Models
                 int hash = 3;
                 hash = 37 * hash + Id;
                 hash = 37 * hash + (Nome == null ? 0 : Nome.GetHashCode());
-                hash = 37 * hash + (Categoria == null ? 0 : Categoria.GetHashCode());
+                hash = 37 * hash + (NomeCategoria == null ? 0 : NomeCategoria.GetHashCode());
                 hash = 37 * hash + Preco.GetHashCode();
                 hash = 37 * hash + (Ingredientes == null ? 0 : Ingredientes.GetHashCode());
                 hash = 37 * hash + (Alergenios == null ? 0 : Alergenios.GetHashCode());
@@ -59,7 +61,7 @@ namespace KIOSKUM.mobile.Models
             sb.Append("Produto\n");
             sb.Append("- ID : " + Id + "\n");
             sb.Append("- Nome : " + Nome + "\n");
-            sb.Append("- Categoria : " + Categoria + "\n");
+            sb.Append("- Categoria : " + NomeCategoria + "\n");
             sb.Append("- Preco : " + Preco + "\n");
             sb.Append("- Ingredientes: ");
             foreach (var ingrediente in Ingredientes)
