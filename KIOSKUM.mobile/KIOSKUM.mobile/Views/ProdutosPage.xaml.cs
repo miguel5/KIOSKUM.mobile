@@ -25,9 +25,10 @@ namespace KIOSKUM.mobile.Views
             service = new ProdutoAPIService();
             AtualizaDados();
         }
-        private async void AtualizaDados()
+        private void AtualizaDados()
         {
-            items = await service.GetItemsAsync();
+            //items = await service.GetItemsAsync();
+            items = new List<Produto>();
             produtoLista.ItemsSource = Listar();
         }
         private void Procurar_TextChanged(object sender, TextChangedEventArgs e)
