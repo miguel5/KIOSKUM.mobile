@@ -39,8 +39,8 @@ namespace KIOSKUM.mobile.Views
                 await Navigation.PushAsync(new EditarContaPage());
            else if (e.Item.ToString().Equals("Logout"))
             {
+                App.AuthToken = new Models.AuthToken();
                 App.Current.MainPage = new LoginPage();
-                // TODO: Eliminar o objeto Cliente da classe App
             }
                 
 

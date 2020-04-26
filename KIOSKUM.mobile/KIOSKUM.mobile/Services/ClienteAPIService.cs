@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,7 @@ namespace KIOSKUM.mobile.Services
         private const string URL_auth = "https://kioskum.azurewebsites.net/api/cliente/login";
         private const string URL_criar = "https://kioskum.azurewebsites.net/api/cliente/criar";
         private const string URL_confirmar = "https://kioskum.azurewebsites.net/api/cliente/confirmar";
+        private const string URL_getCliente = "https://kioskum.azurewebsites.net/api/cliente/get";
         private HttpClient _client = new HttpClient();
 
         public ClienteAPIService()
@@ -69,6 +71,7 @@ namespace KIOSKUM.mobile.Services
 
                 var response = await _client.PostAsync(URL_auth, new StringContent(content, Encoding.UTF8, "application/json"));
                 bool success = response.IsSuccessStatusCode;
+                App.AuthToken = JsonConvert.DeserializeObject<AuthToken>(response.Content.ReadAsStringAsync().Result);   // set auth token
 
                 return success;
             }
@@ -88,6 +91,31 @@ namespace KIOSKUM.mobile.Services
                 bool success = response.IsSuccessStatusCode;
 
                 return success;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<Cliente> GetCliente()
+        {
+            try
+            {
+                _client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", App.AuthToken.Token);
+
+                var response = await _client.GetAsync(URL_getCliente);
+                bool success = response.IsSuccessStatusCode;
+
+                Console.WriteLine("Resposta: " + response.Content.ReadAsStringAsync().Result);
+
+                if (!success)
+                    return new Cliente();
+
+                var cliente = JsonConvert.DeserializeObject<Cliente>(response.Content.ReadAsStringAsync().Result);              
+
+                return cliente;
             }
             catch (Exception ex)
             {

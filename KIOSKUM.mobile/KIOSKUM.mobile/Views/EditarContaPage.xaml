@@ -12,14 +12,34 @@
 
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <Label Text="Nome" FontSize="Medium" TextColor="Black"/>
-            <Entry Placeholder="Nome" />
-            <Label Text="Email" FontSize="Medium" TextColor="Black"/>
-            <Entry Placeholder="Email"/>
-            <Label Text="Telemovel" FontSize="Medium" TextColor="Black"/>
-            <Entry Placeholder="Telemovel"/>
-            <Label Text="Nova Password" FontSize="Medium" TextColor="Black"/>
-            <Entry Placeholder="Password" IsPassword="True"/>
+            <Label Text="Nome" 
+                   FontSize="Medium" 
+                   TextColor="Black"/>
+            
+            <Entry Placeholder="Nome" 
+                   Text="{Binding Cliente.Nome}"/>
+            
+            <Label Text="Email" 
+                   FontSize="Medium" 
+                   TextColor="Black"/>
+            
+            <Entry Placeholder="Email"
+                   Text="{Binding Cliente.Email}"/>
+            
+            <Label Text="Telemovel" 
+                   FontSize="Medium" 
+                   TextColor="Black"/>
+            
+            <Entry Placeholder="Telemovel"
+                   Text="{Binding Cliente.NumTelemovel}"/>
+            
+            <Label Text="Nova Password" 
+                   FontSize="Medium" 
+                   TextColor="Black"/>
+            
+            <Entry Placeholder="Password" 
+                   IsPassword="True"/>
+            
             <Entry Placeholder="Confirmar Password" IsPassword="True"/>
         </StackLayout>
     </ContentPage.Content>

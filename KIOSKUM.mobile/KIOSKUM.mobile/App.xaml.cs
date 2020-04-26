@@ -7,7 +7,7 @@ namespace KIOSKUM.mobile
 {
     public partial class App : Application
     {
-        public static string AuthToken { get; set; }
+        public static AuthToken AuthToken { get; set; }
 
         public App()
         {

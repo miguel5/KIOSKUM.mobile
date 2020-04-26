@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KIOSKUM.mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,14 @@ namespace KIOSKUM.mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditarContaPage : ContentPage
     {
+        EditarContaViewModel ViewModel { get; set; }
+
         public EditarContaPage()
         {
+            ViewModel = new EditarContaViewModel();
+            //ViewModel.FetchData();
+            BindingContext = ViewModel;
+
             InitializeComponent();
         }
 
