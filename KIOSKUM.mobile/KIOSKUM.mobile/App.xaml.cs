@@ -15,6 +15,7 @@ namespace KIOSKUM.mobile
 
             DependencyService.Register<MockDataStore>();
             MainPage = new LoginPage();
+            //MainPage = new NavigationPage(new CarrinhoPage());  // DEBUG
         }
 
         protected override void OnStart()
