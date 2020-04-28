@@ -14,9 +14,8 @@ namespace KIOSKUM.mobile.ViewModels
         public CarrinhoViewModel()
         {
             Items = new ObservableCollection<CarrinhoItem>();
-            Items.Add(new CarrinhoItem { Id = "Tosta Mista", Qtd = 1, Obs = "Sem queijo" });
-            Items.Add(new CarrinhoItem { Id = "Tosta Mista", Qtd = 1, Obs = "Sem fiambre" });
-            Items.Add(new CarrinhoItem { Id = "Água 50cl", Qtd = 2, Obs = "Natural" });
+            Items.Add(new CarrinhoItem { Id = "Baguete de Atum", Qtd = 1, Obs = "Sem tomate" });
+            Items.Add(new CarrinhoItem { Id = "Água 50cl", Qtd = 1, Obs = "Natural" });
 
             Carrinho = new Carrinho { Items = Items };
         }

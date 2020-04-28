@@ -16,13 +16,11 @@ namespace KIOSKUM.mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProdutosPage : ContentPage
     {
-        ProdutoAPIService service;
-        IEnumerable<Produto> items;
+        public IEnumerable<Produto> Items { get; set; }
         public ProdutosPage()
         {
             InitializeComponent();
             Title = "Produtos";
-            service = new ProdutoAPIService();
             AtualizaDados();
         }
         private void AtualizaDados()
@@ -33,10 +31,14 @@ namespace KIOSKUM.mobile.Views
             // -----------------------
             var produtos = new ObservableCollection<Produto>
                 {
-                    new Produto(1, "Tosta Mista", "Sandes", 2.00, new List<string>{"queijo", "fiambre", "pão"}, new List<string>(), ""),
-                    new Produto(2, "Água 50cl", "Bebidas", 1.00, new List<string>(), new List<string>(), "")
+                    new Produto(1, "Tosta Mista", "Sandes", 2.50, new List<string>{"queijo", "fiambre", "pão"}, new List<string>(), ""),
+                    new Produto(2, "Água 50cl", "Bebidas", 0.80, new List<string>(), new List<string>(), ""),
+                    new Produto(2, "Coca-Cola 33cl", "Bebidas", 1.20, new List<string>(), new List<string>(), ""),
+                    new Produto(3, "Baguete de Atum", "Sandes", 3.50, new List<string>(), new List<string>(), ""),
+                    new Produto(3, "Sandes de Panado", "Sandes", 3.50, new List<string>(), new List<string>(), ""),
+                    new Produto(3, "Pizza de Fiambre", "Pizzas", 2.50, new List<string>(), new List<string>(), "")
                 };
-            items = produtos;
+            Items = produtos;
             // ---------------------
 
             produtoLista.ItemsSource = Listar();
@@ -48,10 +50,10 @@ namespace KIOSKUM.mobile.Views
 
         public IEnumerable<ProdutosViewModel<string, Produto>> Listar(string filtro = "")
         {
-            IEnumerable<Produto> produtosFiltrados = this.items;
+            IEnumerable<Produto> produtosFiltrados = Items;
 
             if (!string.IsNullOrEmpty(filtro))
-                produtosFiltrados = items.Where(l => (l.Nome.ToLower().Contains(filtro.ToLower()))
+                produtosFiltrados = Items.Where(l => (l.Nome.ToLower().Contains(filtro.ToLower()))
                                                         || l.NomeCategoria.ToLower().Contains(filtro.ToLower()));
             return from produto in produtosFiltrados
                    orderby produto.Nome
