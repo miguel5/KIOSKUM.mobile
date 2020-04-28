@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace KIOSKUM.mobile.Models
 {
     public class Item

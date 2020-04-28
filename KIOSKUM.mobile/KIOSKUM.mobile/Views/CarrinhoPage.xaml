@@ -7,9 +7,44 @@
              x:Class="KIOSKUM.mobile.Views.CarrinhoPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ListView x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                CachingStrategy="RecycleElement">
+                <d:ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>First Item</x:String>
+                        <x:String>Second Item</x:String>
+                        <x:String>Third Item</x:String>
+                        <x:String>Fourth Item</x:String>
+                        <x:String>Fifth Item</x:String>
+                        <x:String>Sixth Item</x:String>
+                    </x:Array>
+                </d:ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <StackLayout HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding Id}" TextColor="Black"/>
+                                    <Label Text="{Binding Obs}" TextColor="Gray"/>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Center">
+                                    <Label Text="Quantidade"/>
+                                    <Entry Text="1"/>
+                                </StackLayout>
+                                <Button BackgroundColor="White" TextColor="Red" Text="Remover" FontAttributes="Italic" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Checkout"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand" />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

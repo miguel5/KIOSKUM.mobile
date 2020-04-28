@@ -6,7 +6,7 @@ namespace KIOSKUM.mobile.Models
 {
     public class Produto
     {
-        public int Id { get; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string NomeCategoria { get; set; }
         public double Preco { get; set; }

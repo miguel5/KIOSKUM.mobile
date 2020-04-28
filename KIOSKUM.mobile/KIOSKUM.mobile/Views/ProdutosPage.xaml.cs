@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 using KIOSKUM.mobile.Services;
 using KIOSKUM.mobile.Models;
 using KIOSKUM.mobile.ViewModels;
-
+using System.Collections.ObjectModel;
 
 namespace KIOSKUM.mobile.Views
 {
@@ -25,9 +25,20 @@ namespace KIOSKUM.mobile.Views
             service = new ProdutoAPIService();
             AtualizaDados();
         }
-        private async void AtualizaDados()
+        private void AtualizaDados()
         {
-            items = await service.GetItemsAsync();
+            //items = await service.GetItemsAsync();
+
+            // Teste
+            // -----------------------
+            var produtos = new ObservableCollection<Produto>
+                {
+                    new Produto(1, "Tosta Mista", "Sandes", 2.00, new List<string>{"queijo", "fiambre", "pão"}, new List<string>(), ""),
+                    new Produto(2, "Água 50cl", "Bebidas", 1.00, new List<string>(), new List<string>(), "")
+                };
+            items = produtos;
+            // ---------------------
+
             produtoLista.ItemsSource = Listar();
         }
         private void Procurar_TextChanged(object sender, TextChangedEventArgs e)
@@ -50,7 +61,7 @@ namespace KIOSKUM.mobile.Views
 
         async void Carrinho_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            await Navigation.PushModalAsync(new NavigationPage(new CarrinhoPage()));
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using KIOSKUM.mobile.Models;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Collections.ObjectModel;
 
 namespace KIOSKUM.mobile.Services
 {
@@ -21,8 +23,13 @@ namespace KIOSKUM.mobile.Services
         {
             try
             {
+                Client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", App.AuthToken.Token);
+
                 var response = await Client.GetStringAsync(URL_GetProdutos);
                 var produtos = JsonConvert.DeserializeObject<List<Produto>>(response);
+                
+
                 return produtos;
             }
             catch (Exception ex)
