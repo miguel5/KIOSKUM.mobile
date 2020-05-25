@@ -21,5 +21,14 @@ namespace KIOSKUM.mobile.Views
             BindingContext = this.ViewModel = viewModel;
             BindingContext = ViewModel;
         }
+
+        public void RemoverClicked(Object sender, EventArgs args)
+        {
+            Button button = (Button)sender;
+            CarrinhoItem itemToRemove = (CarrinhoItem)button.CommandParameter;
+
+            ViewModel.Items.Remove(itemToRemove);
+
+        }
     }
 }

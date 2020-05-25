@@ -19,5 +19,6 @@ namespace KIOSKUM.mobile.ViewModels
 
             Carrinho = new Carrinho { Items = Items };
         }
+
     }
 }

@@ -46,11 +46,19 @@ namespace KIOSKUM.mobile.Views
 
             produtoLista.ItemsSource = Listar();
         }
+
+        /*
+         * Quando o campo de texto de procurar um produto for alterado chama o
+         * método Listar para atualizar os produtos mostrados
+         */
         private void Procurar_TextChanged(object sender, TextChangedEventArgs e)
         {
             produtoLista.ItemsSource = this.Listar(this.sbProcurar.Text);
         }
 
+        /*
+         * Listar produtos de acordo com um filtro
+         */
         public IEnumerable<ProdutosViewModel<string, Produto>> Listar(string filtro = "")
         {
             IEnumerable<Produto> produtosFiltrados = Items;

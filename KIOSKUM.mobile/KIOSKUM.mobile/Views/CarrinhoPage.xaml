@@ -34,7 +34,7 @@
                                     <Label Text="Quantidade"/>
                                     <Entry Text="1"/>
                                 </StackLayout>
-                                <Button BackgroundColor="White" TextColor="Red" Text="Remover" FontAttributes="Italic" />
+                                <Button BackgroundColor="White" TextColor="Red" Text="Remover" FontAttributes="Italic" Clicked="RemoverClicked" CommandParameter="{Binding .}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
