@@ -28,7 +28,7 @@
                                 <Label Text="{Binding Nome}" TextColor="Black"/>
                                 <Label Text="{Binding Preco, StringFormat='{}{0:} EUR'}" TextColor="Gray"/>
                             </StackLayout>
-                            <Button BackgroundColor="White" TextColor="Green" Text="+" FontSize="Large" />
+                            <Button BackgroundColor="White" TextColor="Green" Text="+" FontSize="Large" Clicked="AddProdClicked" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

@@ -17,10 +17,13 @@ namespace KIOSKUM.mobile.Views
     public partial class ProdutosPage : ContentPage
     {
         public IEnumerable<Produto> Items { get; set; }
+        public CarrinhoViewModel CarrinhoVM { get; set; }
+
         public ProdutosPage()
         {
             InitializeComponent();
             Title = "Produtos";
+            this.CarrinhoVM = new CarrinhoViewModel();
             AtualizaDados();
         }
         private void AtualizaDados()
@@ -61,9 +64,12 @@ namespace KIOSKUM.mobile.Views
                    select new ProdutosViewModel<string, Produto>(grupos.Key, grupos);
         }
 
+        /*
+         * Comportamento apos um click sobre o carrinho
+         */
         async void Carrinho_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new CarrinhoPage()));
+            await Navigation.PushModalAsync(new NavigationPage(new CarrinhoPage (this.CarrinhoVM)));
         }
 
         /*
@@ -80,6 +86,21 @@ namespace KIOSKUM.mobile.Views
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        /*
+         * Comportamento apos o botao de adicionar produto ser clicado
+         */
+        public void AddProdClicked(Object sender, EventArgs args)
+        {
+            Button button = (Button)sender;
+            StackLayout stackLayout = (StackLayout)button.Parent;
+            StackLayout stackLayoutChild = (StackLayout)stackLayout.Children[0]; ;
+            Label label = (Label)stackLayoutChild.Children[0];
+
+            String nomeProduto = label.Text;
+
+            this.CarrinhoVM.Items.Add(new CarrinhoItem { Id = nomeProduto, Obs = "", Qtd = 1 });
         }
     }
 }

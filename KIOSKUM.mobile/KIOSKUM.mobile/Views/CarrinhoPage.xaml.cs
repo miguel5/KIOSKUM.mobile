@@ -13,12 +13,12 @@ namespace KIOSKUM.mobile.Views
     {
         public CarrinhoViewModel ViewModel { get; set; }
 
-        public CarrinhoPage()
+        public CarrinhoPage(CarrinhoViewModel viewModel)
         {
             InitializeComponent();
             Title = "Carrinho";
 
-            ViewModel = new CarrinhoViewModel();
+            BindingContext = this.ViewModel = viewModel;
             BindingContext = ViewModel;
         }
     }
