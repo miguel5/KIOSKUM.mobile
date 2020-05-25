@@ -17,6 +17,7 @@
                   HasUnevenRows="True" 
                   IsGroupingEnabled="True"
                   GroupDisplayBinding="{Binding Key}"
+                  ItemTapped="Handle_ItemTapped"
                   SeparatorVisibility="Default" 
                   SeparatorColor="Black">
             <ListView.ItemTemplate>

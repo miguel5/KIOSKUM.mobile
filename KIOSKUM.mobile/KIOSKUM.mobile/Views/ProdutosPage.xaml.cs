@@ -34,7 +34,7 @@ namespace KIOSKUM.mobile.Views
                     new Produto(1, "Tosta Mista", "Sandes", 2.50, new List<string>{"queijo", "fiambre", "pão"}, new List<string>(), ""),
                     new Produto(2, "Água 50cl", "Bebidas", 0.80, new List<string>(), new List<string>(), ""),
                     new Produto(2, "Coca-Cola 33cl", "Bebidas", 1.20, new List<string>(), new List<string>(), ""),
-                    new Produto(3, "Baguete de Atum", "Sandes", 3.50, new List<string>(), new List<string>(), ""),
+                    new Produto(3, "Baguete de Atum", "Sandes", 3.50, new List<string>(), new List<string>(), "https://kioskum.azurewebsites.net/images/produto/Baguete_de_Atum.png"),
                     new Produto(3, "Sandes de Panado", "Sandes", 3.50, new List<string>(), new List<string>(), ""),
                     new Produto(3, "Pizza de Fiambre", "Pizzas", 2.50, new List<string>(), new List<string>(), "")
                 };
@@ -64,6 +64,22 @@ namespace KIOSKUM.mobile.Views
         async void Carrinho_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new CarrinhoPage()));
+        }
+
+        /*
+         * Comportamento apos um click sobre um produto
+         */
+        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null)
+                return;
+
+            var selectedProduct = e.Item as Produto;
+
+            await Navigation.PushModalAsync(new NavigationPage(new DetalhesProduto(selectedProduct)));
+
+            //Deselect Item
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }
