@@ -22,6 +22,9 @@ namespace KIOSKUM.mobile.Views
             BindingContext = ViewModel;
         }
 
+        /*
+         * Comportamento apos o click do botao remover
+         */
         public void RemoverClicked(Object sender, EventArgs args)
         {
             Button button = (Button)sender;

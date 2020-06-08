@@ -17,7 +17,7 @@
                 </StackLayout>
 
                 <StackLayout VerticalOptions="Center">
-                    <Label Text="Ingredientes: Pão, pasta de atum, alface, tomate" TextColor="Black" FontSize="Medium" />
+                    <Label Text="{Binding ingredientesString}" TextColor="Black" FontSize="Medium" />
                     <Label Text="Alergénios: Lactose" TextColor="Black" FontSize="Medium" />
                     <Label Text="Preço: 3.50€" TextColor="Black" FontSize="Medium" />
                 </StackLayout>

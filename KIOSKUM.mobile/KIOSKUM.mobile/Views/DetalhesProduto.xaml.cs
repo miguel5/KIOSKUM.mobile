@@ -14,10 +14,15 @@ namespace KIOSKUM.mobile.Views
     public partial class DetalhesProduto : ContentPage
     {
         public Produto Produto { get; set; }
+        // Teste
+        public string IngredientesString { get; set; }
 
         public DetalhesProduto(Produto produto)
         {
             Produto = produto;
+
+            // Teste
+            IngredientesString = string.Join(", ", produto.Ingredientes.ToArray());
 
             BindingContext = this;
 
