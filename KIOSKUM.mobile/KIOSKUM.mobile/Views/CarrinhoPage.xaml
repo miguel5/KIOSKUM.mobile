@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="KIOSKUM.mobile.Views.CarrinhoPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="5">
             <ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
@@ -41,9 +41,20 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button Text="Checkout"
-                VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Padding="10">
+                <Label Text="Total:" TextColor="Black" FontSize="Medium"/>
+                <Label Text="4.00" TextColor="Black" FontSize="Medium"/>
+            </StackLayout>
+            
+            <Label Text="Hora de levantamento:" FontSize="Medium" TextColor="Black"/>
+            <TimePicker x:Name="_timePicker"
+                        Time= "{Binding selectedTime}"
+                        Format="T" />
+
+            <Button Text="Pedir reserva"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="PedirReservaClicked"/>
 
         </StackLayout>
     </ContentPage.Content>

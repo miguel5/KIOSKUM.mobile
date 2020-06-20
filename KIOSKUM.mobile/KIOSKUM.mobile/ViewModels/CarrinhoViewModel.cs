@@ -10,6 +10,7 @@ namespace KIOSKUM.mobile.ViewModels
     {
         public Carrinho Carrinho { get; set; }
         public ObservableCollection<CarrinhoItem> Items { get; set; }
+        public TimeSpan selectedTime;
 
         public CarrinhoViewModel()
         {
@@ -18,6 +19,7 @@ namespace KIOSKUM.mobile.ViewModels
             //Items.Add(new CarrinhoItem { Id = "Água 50cl", Qtd = 1, Obs = "Natural" });
 
             Carrinho = new Carrinho { Items = Items };
+            selectedTime = new TimeSpan(0, 0, 0);
         }
 
     }

@@ -20,6 +20,7 @@ namespace KIOSKUM.mobile.Views
 
             BindingContext = this.ViewModel = viewModel;
             BindingContext = ViewModel;
+
         }
 
         /*
@@ -32,6 +33,14 @@ namespace KIOSKUM.mobile.Views
 
             ViewModel.Items.Remove(itemToRemove);
 
+        }
+
+        /*
+         * Comportamento apos o click do botao pedir reserva
+         */
+        public void PedirReservaClicked(Object sender, EventArgs args)
+        {
+            Console.WriteLine(_timePicker.Time);
         }
     }
 }
