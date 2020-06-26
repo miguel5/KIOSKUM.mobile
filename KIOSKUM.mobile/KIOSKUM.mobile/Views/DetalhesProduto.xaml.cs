@@ -1,4 +1,5 @@
 ﻿using KIOSKUM.mobile.Models;
+using KIOSKUM.mobile.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,22 +14,21 @@ namespace KIOSKUM.mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetalhesProduto : ContentPage
     {
-        public Produto Produto { get; set; }
-        // Teste
+        public DetalhesProdutoViewModel ViewModel { get; set; }
+        
         public string IngredientesString { get; set; }
 
-        public DetalhesProduto(Produto produto)
+        public DetalhesProduto(DetalhesProdutoViewModel viewModel)
         {
-            Produto = produto;
+            this.ViewModel = viewModel;
 
-            // Teste
-            IngredientesString = string.Join(", ", produto.Ingredientes.ToArray());
+            IngredientesString = string.Join(", ", ViewModel.Produto.Ingredientes.ToArray());
 
-            BindingContext = this;
+            BindingContext = ViewModel;
 
             InitializeComponent();
 
-            Title = Produto.Nome;
+            Title = ViewModel.Produto.Nome;
         }
     }
 }
