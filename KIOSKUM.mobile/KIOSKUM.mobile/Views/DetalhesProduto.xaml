@@ -24,14 +24,15 @@
                 
                 <StackLayout Spacing="2">
                     <Label Text="Observações:" TextColor="Black" FontSize="Medium"/>
-                    <Editor x:Name="Observacoes"/>
+                    <Editor x:Name="Observacoes" Text="{Binding Observacoes}"/>
                 </StackLayout>
             </StackLayout>
 
             <Button Text="Adicionar"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="End"
-                    BackgroundColor="Green" />
+                    BackgroundColor="Green"
+                    Clicked="AddProdClicked"/>
 
         </Grid>
     </ContentPage.Content>

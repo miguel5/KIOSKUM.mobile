@@ -90,7 +90,7 @@ namespace KIOSKUM.mobile.Views
 
             var selectedProduct = e.Item as Produto;
 
-            await Navigation.PushModalAsync(new NavigationPage(new DetalhesProduto(new DetalhesProdutoViewModel { Produto = selectedProduct })));
+            await Navigation.PushModalAsync(new NavigationPage(new DetalhesProduto(new DetalhesProdutoViewModel { Produto = selectedProduct }, this.CarrinhoVM)));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

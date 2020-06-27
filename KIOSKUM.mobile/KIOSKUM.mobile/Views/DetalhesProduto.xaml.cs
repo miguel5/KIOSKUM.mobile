@@ -15,12 +15,14 @@ namespace KIOSKUM.mobile.Views
     public partial class DetalhesProduto : ContentPage
     {
         public DetalhesProdutoViewModel ViewModel { get; set; }
+        public CarrinhoViewModel CarrinhoVM { get; set; }
         
-        public string IngredientesString { get; set; }
+        public static string IngredientesString { get; set; }
 
-        public DetalhesProduto(DetalhesProdutoViewModel viewModel)
+        public DetalhesProduto(DetalhesProdutoViewModel viewModel, CarrinhoViewModel carrinhoVM)
         {
             this.ViewModel = viewModel;
+            this.CarrinhoVM = carrinhoVM;
 
             IngredientesString = string.Join(", ", ViewModel.Produto.Ingredientes.ToArray());
 
@@ -29,6 +31,15 @@ namespace KIOSKUM.mobile.Views
             InitializeComponent();
 
             Title = ViewModel.Produto.Nome;
+        }
+
+        /*
+         * Comportamento apos o botao de adicionar produto ser clicado
+         */
+        public void AddProdClicked(Object sender, EventArgs args)
+        {
+            this.CarrinhoVM.Items.Add(new CarrinhoItem { Id = ViewModel.Produto.Nome, Obs = this.ViewModel.Observacoes, Qtd = 1 });
+            Navigation.PopModalAsync();
         }
     }
 }

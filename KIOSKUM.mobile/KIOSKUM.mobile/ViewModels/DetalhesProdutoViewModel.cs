@@ -8,6 +8,7 @@ namespace KIOSKUM.mobile.ViewModels
     public class DetalhesProdutoViewModel : BaseViewModel
     {
         public Produto Produto { get; set; }
+        public string Observacoes { get; set; }
 
         public DetalhesProdutoViewModel() { 
         
