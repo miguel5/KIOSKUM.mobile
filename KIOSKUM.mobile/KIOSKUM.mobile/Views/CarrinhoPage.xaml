@@ -32,7 +32,9 @@
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="Center">
                                     <Label Text="Quantidade"/>
-                                    <Entry Text="1"/>
+                                    <Entry x:Name="quantidade_entry" BindingContext="{x:Reference stepper}" Text="{Binding Value}"/>
+                                    <Stepper x:Name="stepper" Maximum="99"
+                                             ValueChanged="OnStepperValueChanged" />
                                 </StackLayout>
                                 <Button BackgroundColor="White" TextColor="Red" Text="Remover" FontAttributes="Italic" Clicked="RemoverClicked" CommandParameter="{Binding .}"/>
                             </StackLayout>
