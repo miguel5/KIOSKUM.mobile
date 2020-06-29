@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="KIOSKUM.mobile.Views.CarrinhoPage">
+             x:Class="KIOSKUM.mobile.Views.CarrinhoPage"
+             xmlns:local="clr-namespace:KIOSKUM.mobile.CustomElements">
     <ContentPage.Content>
         <StackLayout Padding="5">
             <ListView x:Name="ItemsListView"
@@ -30,13 +31,16 @@
                                     <Label Text="{Binding Id}" TextColor="Black"/>
                                     <Label Text="{Binding Obs}" TextColor="Gray"/>
                                 </StackLayout>
-                                <StackLayout HorizontalOptions="Center">
-                                    <Label Text="Quantidade"/>
-                                    <Entry x:Name="quantidade_entry" BindingContext="{x:Reference stepper}" Text="{Binding Value}"/>
-                                    <Stepper x:Name="stepper" Maximum="99"
-                                             ValueChanged="OnStepperValueChanged" />
-                                </StackLayout>
-                                <Button BackgroundColor="White" TextColor="Red" Text="Remover" FontAttributes="Italic" Clicked="RemoverClicked" CommandParameter="{Binding .}"/>
+
+                                <local:CustomStepper x:Name="stepper"
+                                                     Text="{Binding Qtd, Mode=TwoWay}"/>
+
+                                <Button BackgroundColor="White"
+                                        TextColor="Red"
+                                        Text="X"
+                                        FontAttributes="Bold"
+                                        Clicked="RemoverClicked"
+                                        CommandParameter="{Binding .}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

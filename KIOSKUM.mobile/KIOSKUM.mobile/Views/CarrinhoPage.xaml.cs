@@ -1,5 +1,6 @@
 ﻿using KIOSKUM.mobile.Models;
 using KIOSKUM.mobile.ViewModels;
+using KIOSKUM.mobile.CustomElements;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -57,8 +58,14 @@ namespace KIOSKUM.mobile.Views
             double value = e.NewValue;
             _rotatingLabel.Rotation = value;
             _displayLabel.Text = string.Format("The Stepper value is {0}", value);
-            */
 
+            <Stepper x:Name="stepper" Maximum="99"
+                                             ValueChanged="OnStepperValueChanged"
+                                             Value="{Binding Qtd, Mode=TwoWay}" />
+           <Label x:Name="quantidade_label" BindingContext="{x:Reference stepper}" Text="{Binding Value}"/>
+
+
+            */
         }
     }
 }
