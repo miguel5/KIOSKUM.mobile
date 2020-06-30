@@ -35,10 +35,12 @@
                                 <local:CustomStepper x:Name="stepper"
                                                      Text="{Binding Qtd, Mode=TwoWay}"/>
 
-                                <Button BackgroundColor="White"
+                                <Button BackgroundColor="Transparent"
                                         TextColor="Red"
                                         Text="X"
+                                        FontSize="Large"
                                         FontAttributes="Bold"
+                                        WidthRequest="40"
                                         Clicked="RemoverClicked"
                                         CommandParameter="{Binding .}"/>
                             </StackLayout>

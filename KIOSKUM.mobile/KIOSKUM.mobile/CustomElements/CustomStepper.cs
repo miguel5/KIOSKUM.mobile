@@ -10,7 +10,6 @@ namespace KIOSKUM.mobile.CustomElements
     {
         Button PlusBtn;
         Button MinusBtn;
-        Entry Entry;
         Label Label;
 
         public static readonly BindableProperty TextProperty =
@@ -28,12 +27,14 @@ namespace KIOSKUM.mobile.CustomElements
         }
         public CustomStepper()
         {
-            //Spacing = 1;
+            Spacing = 1;
+            Margin = 1;
+            Orientation = StackOrientation.Horizontal;
 
-            PlusBtn = new Button { Text = "+", WidthRequest = 30, HeightRequest = 30, FontAttributes = FontAttributes.Bold, FontSize = 15,
-                VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
-            MinusBtn = new Button { Text = "-", WidthRequest = 30, HeightRequest = 30, FontAttributes = FontAttributes.Bold, FontSize = 15,
-                VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
+            PlusBtn = new Button { Text = "+", WidthRequest = 40, HeightRequest = 20, FontAttributes = FontAttributes.Bold, FontSize = 15,
+                VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center, BorderColor = Color.Black, Padding = 0 };
+            MinusBtn = new Button { Text = "-", WidthRequest = 40, HeightRequest = 20, FontAttributes = FontAttributes.Bold, FontSize = 15,
+                VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center, BorderColor = Color.Black, Padding = 0 };
 
             switch (Device.RuntimePlatform)
             {
@@ -53,18 +54,8 @@ namespace KIOSKUM.mobile.CustomElements
                     }
             }
 
-            Orientation = StackOrientation.Horizontal;
             PlusBtn.Clicked += PlusBtn_Clicked;
             MinusBtn.Clicked += MinusBtn_Clicked;
-            Entry = new Entry
-            {
-                PlaceholderColor = Color.Gray,
-                Keyboard = Keyboard.Numeric,
-                WidthRequest = 40,
-                BackgroundColor = Color.FromHex("#3FFF")
-            };
-            Entry.SetBinding(Entry.TextProperty, new Binding(nameof(Text), BindingMode.TwoWay, source: this));
-            Entry.TextChanged += Entry_TextChanged;
 
             Label = new Label
             {
@@ -77,27 +68,23 @@ namespace KIOSKUM.mobile.CustomElements
             };
             Label.SetBinding(Label.TextProperty, new Binding(nameof(Text), BindingMode.TwoWay, source: this));
 
-            StackLayout stack = new StackLayout
+            StackLayout buttons_stack = new StackLayout
             {
-                //Spacing = 1,
-                HeightRequest = 60,
+                Spacing = 1,
+                Margin = 1,
+                //HeightRequest = 60,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
                 Children =
                 {
                     PlusBtn,
                     MinusBtn
                 }
             };
-            //Children.Add(MinusBtn);
-            Children.Add(Label);
-            Children.Add(stack);
-            //Children.Add(PlusBtn);
-            
-        }
 
-        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(e.NewTextValue))
-                this.Text = int.Parse(e.NewTextValue);
+
+            Children.Add(Label);
+            Children.Add(buttons_stack);          
         }
 
         private void MinusBtn_Clicked(object sender, EventArgs e)
