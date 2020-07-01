@@ -27,6 +27,16 @@ namespace KIOSKUM.mobile.CustomElements
         }
         public CustomStepper()
         {
+            /*
+             * Add tap recognizer to trigger event 
+             *
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (s, e) => {
+                // handle the tap
+            };
+            image.GestureRecognizers.Add(tapGestureRecognizer);
+            */
+
             Spacing = 1;
             Margin = 1;
             Orientation = StackOrientation.Horizontal;

@@ -38,16 +38,16 @@ namespace KIOSKUM.mobile.Services
                 if(response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
                 {
                     var erros = new ErrorsList();
-                    erros.ListaErros.Add(21);      // Adiciona erro 21 Erro do lado do servidor
+                    erros.Erros.Add(21);      // Adiciona erro 21 Erro do lado do servidor
                     return erros;
                 }
                 else
                 {
                     var erros = JsonConvert.DeserializeObject<ErrorsList>(response.Content.ReadAsStringAsync().Result);
 
-                    if (!erros.ListaErros.Any())
+                    if (!erros.Erros.Any())
                     {
-                        erros.ListaErros.Add(20); // Adiciona erro 20 Campos de Preenchimento Obrigatorio
+                        erros.Erros.Add(20); // Adiciona erro 20 Campos de Preenchimento Obrigatorio
                     }
 
                     return erros;
