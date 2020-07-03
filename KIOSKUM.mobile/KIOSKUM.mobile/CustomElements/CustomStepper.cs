@@ -72,9 +72,11 @@ namespace KIOSKUM.mobile.CustomElements
                 WidthRequest = 20,
                 HeightRequest = 20,
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.End,
                 BackgroundColor = Color.FromHex("#3FFF"),
-                TextColor = Color.Black
+                TextColor = Color.Black,
+                TextDecorations = TextDecorations.Underline,
+                Padding = 0
             };
             Label.SetBinding(Label.TextProperty, new Binding(nameof(Text), BindingMode.TwoWay, source: this));
 
@@ -82,7 +84,7 @@ namespace KIOSKUM.mobile.CustomElements
             {
                 Spacing = 1,
                 Margin = 1,
-                //HeightRequest = 60,
+                WidthRequest = 40,
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
                 Children =
@@ -101,12 +103,28 @@ namespace KIOSKUM.mobile.CustomElements
         {
             if (Text > 1)
                 Text--;
+
+            OnStepperClicked(EventArgs.Empty);
         }
 
         private void PlusBtn_Clicked(object sender, EventArgs e)
         {
             Text++;
+
+            OnStepperClicked(EventArgs.Empty);
         }
+
+        
+        protected virtual void OnStepperClicked(EventArgs e)
+        {
+            EventHandler handler = StepperClicked;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event EventHandler StepperClicked;
 
     }
 }

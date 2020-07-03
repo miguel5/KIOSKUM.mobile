@@ -108,7 +108,7 @@ namespace KIOSKUM.mobile.Views
 
             String nomeProduto = label.Text;
 
-            this.CarrinhoVM.Items.Add(new CarrinhoItem { Id = nomeProduto, Obs = "", Qtd = 1 });
+            this.CarrinhoVM.Items.Add(new CarrinhoItem { Id = nomeProduto, Obs = "", Qtd = 1, PrecoUnidade = 3 });
         }
     }
 }

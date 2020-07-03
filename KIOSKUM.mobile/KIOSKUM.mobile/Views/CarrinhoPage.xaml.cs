@@ -20,7 +20,7 @@ namespace KIOSKUM.mobile.Views
             Title = "Carrinho";
 
             BindingContext = this.ViewModel = viewModel;
-            BindingContext = ViewModel;
+            //BindingContext = ViewModel;
 
         }
 
@@ -33,6 +33,7 @@ namespace KIOSKUM.mobile.Views
             CarrinhoItem itemToRemove = (CarrinhoItem)button.CommandParameter;
 
             ViewModel.Items.Remove(itemToRemove);
+            ViewModel.updateTotal();
         }
 
         /*
@@ -66,6 +67,11 @@ namespace KIOSKUM.mobile.Views
 
 
             */
+        }
+
+        void OnStepperClicked(object sender, EventArgs e)
+        {
+            ViewModel.updateTotal();
         }
     }
 }
