@@ -26,12 +26,15 @@ namespace KIOSKUM.mobile.Views
             this.CarrinhoVM = new CarrinhoViewModel();
             AtualizaDados();
         }
+
+
         private void AtualizaDados()
         {
-            //items = await service.GetItemsAsync();
+            //Items = await service.GetItemsAsync();
 
             // Teste
             // -----------------------
+            
             var produtos = new ObservableCollection<Produto>
                 {
                     new Produto(1, "Tosta Mista", "Sandes", 2.50, new List<string>{"queijo", "fiambre", "pão"}, new List<string>(), ""),
@@ -42,6 +45,7 @@ namespace KIOSKUM.mobile.Views
                     new Produto(3, "Pizza de Fiambre", "Pizzas", 2.50, new List<string>(), new List<string>(), "")
                 };
             Items = produtos;
+            
             // ---------------------
 
             produtoLista.ItemsSource = Listar();

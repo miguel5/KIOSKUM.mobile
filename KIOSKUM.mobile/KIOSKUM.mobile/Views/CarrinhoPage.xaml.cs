@@ -69,6 +69,20 @@ namespace KIOSKUM.mobile.Views
             */
         }
 
+
+        /*
+         * Comportamento apos um click sobre um produto
+         */
+        void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null)
+                return;
+
+            //Deselect Item
+            ((ListView)sender).SelectedItem = null;
+        }
+
+
         void OnStepperClicked(object sender, EventArgs e)
         {
             ViewModel.updateTotal();

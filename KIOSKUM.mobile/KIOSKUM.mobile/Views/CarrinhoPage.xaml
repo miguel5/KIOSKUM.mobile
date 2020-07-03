@@ -12,7 +12,8 @@
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
-                CachingStrategy="RecycleElement">
+                CachingStrategy="RecycleElement"
+                ItemTapped="Handle_ItemTapped" >
                 <d:ListView.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>First Item</x:String>
