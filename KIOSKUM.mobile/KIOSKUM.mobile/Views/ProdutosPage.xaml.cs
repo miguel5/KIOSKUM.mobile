@@ -18,23 +18,25 @@ namespace KIOSKUM.mobile.Views
     {
         public IEnumerable<Produto> Items { get; set; }
         public CarrinhoViewModel CarrinhoVM { get; set; }
+        private ProdutoAPIService API;
 
         public ProdutosPage()
         {
             InitializeComponent();
             Title = "Produtos";
             this.CarrinhoVM = new CarrinhoViewModel();
+            API = new ProdutoAPIService();
             AtualizaDados();
         }
 
 
-        private void AtualizaDados()
+        async private void AtualizaDados()
         {
-            //Items = await service.GetItemsAsync();
+            Items = await API.GetItemsAsync();
 
             // Teste
             // -----------------------
-            
+            /*
             var produtos = new ObservableCollection<Produto>
                 {
                     new Produto(1, "Tosta Mista", "Sandes", 2.50, new List<string>{"queijo", "fiambre", "pão"}, new List<string>(), ""),
@@ -45,7 +47,7 @@ namespace KIOSKUM.mobile.Views
                     new Produto(3, "Pizza de Fiambre", "Pizzas", 2.50, new List<string>(), new List<string>(), "")
                 };
             Items = produtos;
-            
+            */
             // ---------------------
 
             produtoLista.ItemsSource = Listar();
