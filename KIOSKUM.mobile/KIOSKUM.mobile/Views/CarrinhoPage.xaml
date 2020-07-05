@@ -65,10 +65,10 @@
                         Time= "{Binding selectedTime}"
                         Format="T" />
 
-            <Button Text="Pedir reserva"
+            <Button Text="Confirmar reserva"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
-                    Clicked="PedirReservaClicked"/>
+                    Clicked="OnConfirmarReservaClicked"/>
 
         </StackLayout>
     </ContentPage.Content>

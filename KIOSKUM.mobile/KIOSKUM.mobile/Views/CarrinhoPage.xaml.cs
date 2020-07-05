@@ -39,10 +39,11 @@ namespace KIOSKUM.mobile.Views
         /*
          * Comportamento apos o click do botao pedir reserva
          */
-        public void PedirReservaClicked(Object sender, EventArgs args)
+        async public void OnConfirmarReservaClicked(Object sender, EventArgs args)
         {
-            Console.WriteLine(_timePicker.Time);
-
+            bool answer = await DisplayAlert("Confirmar reserva",
+                                             "Confirmar reserva no valor de " + ViewModel.Total + "€ " + "para as " + _timePicker.Time + "?",
+                                             "Sim", "Não");
         }
 
         /*

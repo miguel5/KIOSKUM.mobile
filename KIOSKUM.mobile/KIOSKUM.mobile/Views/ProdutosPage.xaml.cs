@@ -107,14 +107,18 @@ namespace KIOSKUM.mobile.Views
          */
         public void AddProdClicked(Object sender, EventArgs args)
         {
-            Button button = (Button)sender;
+            /*Button button = (Button)sender;
             StackLayout stackLayout = (StackLayout)button.Parent;
             StackLayout stackLayoutChild = (StackLayout)stackLayout.Children[0]; ;
             Label label = (Label)stackLayoutChild.Children[0];
 
             String nomeProduto = label.Text;
+            */
 
-            this.CarrinhoVM.Items.Add(new CarrinhoItem { Id = nomeProduto, Obs = "", Qtd = 1, PrecoUnidade = 3 });
+            Button button = (Button)sender;
+            Produto produto = (Produto)button.CommandParameter;
+
+            this.CarrinhoVM.Items.Add(new CarrinhoItem { Id = produto.Nome, Obs = "", Qtd = 1, PrecoUnidade = 3 });
         }
     }
 }
