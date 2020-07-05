@@ -1,15 +1,20 @@
 ﻿using KIOSKUM.mobile.Models;
+using KIOSKUM.mobile.PostModels;
+using KIOSKUM.mobile.Services;
+using KIOSKUM.mobile.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
 namespace KIOSKUM.mobile.ViewModels
 {
     public class CarrinhoViewModel : BaseViewModel
     {
         private double _total;
+        private ReservaAPIService API { get; set; }
 
         public Carrinho Carrinho { get; set; }
         public ObservableCollection<CarrinhoItem> Items { get; set; }
@@ -27,17 +32,31 @@ namespace KIOSKUM.mobile.ViewModels
         public CarrinhoViewModel()
         {
             Items = new ObservableCollection<CarrinhoItem>();
-            //Items.Add(new CarrinhoItem { Id = "Baguete de Atum", Qtd = 1, Obs = "Sem tomate" });
-            //Items.Add(new CarrinhoItem { Id = "Água 50cl", Qtd = 1, Obs = "Natural" });
-
             Carrinho = new Carrinho { Items = Items };
-            updateTotal();
             selectedTime = new TimeSpan(0, 0, 0);
+            API = new ReservaAPIService();
+
+            UpdateTotal();
+
+            MessagingCenter.Subscribe<CarrinhoPage>(this, "ConfirmarReservaClicked", async (page) =>
+            {
+                ReservaPostModel reserva = new ReservaPostModel(Items, selectedTime);
+                
+                var success = await API.RegistarReserva(reserva);
+
+                if (success)
+                {
+                    App.Current.MainPage = new LoginPage();
+                }
+                else
+                {
+                    page.DisplayErroRegistarReserva();
+                }
+            });
         }
 
-        public void updateTotal()
+        public void UpdateTotal()
         {
-            //Total = Items.Sum(x => x.PrecoTotal);
             OnPropertyChanged("Total");
         }
 

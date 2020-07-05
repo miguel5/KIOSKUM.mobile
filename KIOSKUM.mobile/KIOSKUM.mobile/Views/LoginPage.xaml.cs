@@ -17,7 +17,6 @@ namespace KIOSKUM.mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        readonly ClienteAPIService API = new ClienteAPIService();
         LoginViewModel ViewModel;
         public LoginPage()
         {
