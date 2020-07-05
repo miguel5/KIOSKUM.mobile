@@ -29,6 +29,7 @@ namespace KIOSKUM.mobile.Views
         async private void AtualizaDados()
         {
             Items = await API.GetItemsAsync();
+            //Console.WriteLine(Items.ToList()[0].ToString());
 
             // Teste
             // -----------------------
@@ -106,7 +107,7 @@ namespace KIOSKUM.mobile.Views
             Button button = (Button)sender;
             Produto produto = (Produto)button.CommandParameter;
 
-            this.CarrinhoVM.Items.Add(new CarrinhoItem { Id = produto.IdProduto, Nome = produto.Nome, Obs = "", Qtd = 1, PrecoUnidade = produto.Preco });
+            this.CarrinhoVM.Items.Add(new CarrinhoItem { Id = produto.IdProduto, Nome = produto.Nome, Obs = null, Qtd = 1, PrecoUnidade = produto.Preco });
         }
     }
 }

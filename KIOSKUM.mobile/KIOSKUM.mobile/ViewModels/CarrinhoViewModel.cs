@@ -44,9 +44,12 @@ namespace KIOSKUM.mobile.ViewModels
                 
                 var success = await API.RegistarReserva(reserva);
 
-                if (success)
+                // Verifica se a lista de erros está vazia
+                if (!success.Erros.Any())
                 {
-                    App.Current.MainPage = new LoginPage();
+                    page.DisplayReservaSucesso();
+                    Items = new ObservableCollection<CarrinhoItem>();
+                    Carrinho.Items = Items;
                 }
                 else
                 {

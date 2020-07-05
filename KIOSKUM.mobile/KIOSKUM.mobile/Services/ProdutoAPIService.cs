@@ -25,9 +25,6 @@ namespace KIOSKUM.mobile.Services
         {
             try
             {
-                Client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Bearer", App.AuthToken.Token);
-
                 var categorias = await GetCategorias();
                 List<Produto> produtos = new List<Produto>();
                 
@@ -100,7 +97,7 @@ namespace KIOSKUM.mobile.Services
      */
     class SProduto
     {
-        public int Id { get; set; }
+        public int IdProduto { get; set; }
         public string Nome { get; set; }
         public int IdCategoria { get; set; }
         public double Preco { get; set; }
@@ -112,7 +109,7 @@ namespace KIOSKUM.mobile.Services
 
         public Produto ToProduto(string nomeCategoria)
         {
-            return new Produto(Id, Nome, nomeCategoria, Preco, Ingredientes, Alergenios, URL);
+            return new Produto(IdProduto, Nome, nomeCategoria, Preco, Ingredientes, Alergenios, URL);
         }
     }
 }
