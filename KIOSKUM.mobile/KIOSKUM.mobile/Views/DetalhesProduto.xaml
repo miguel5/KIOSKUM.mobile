@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KIOSKUM.mobile.Views.DetalhesProduto">
+    <ContentPage.Content>
+
+        <Grid>
+
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Spacing="5" Padding="10">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                        <Image x:Name="imagemProduto" Source="{Binding Produto.URL}" VerticalOptions="FillAndExpand" Scale="2.5"/>
+                    </ContentView>
+                </StackLayout>
+
+                <StackLayout VerticalOptions="Center">
+                    <Label Text="{Binding ingredientesString}" TextColor="Black" FontSize="Medium" />
+                    <Label Text="Alergénios: Lactose" TextColor="Black" FontSize="Medium" />
+                    <Label Text="Preço: 3.50€" TextColor="Black" FontSize="Medium" />
+                </StackLayout>
+                
+                <StackLayout Spacing="2">
+                    <Label Text="Observações:" TextColor="Black" FontSize="Medium"/>
+                    <Editor x:Name="Observacoes" Text="{Binding Observacoes}"/>
+                </StackLayout>
+            </StackLayout>
+
+            <Button Text="Adicionar"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="End"
+                    BackgroundColor="Green"
+                    Clicked="AddProdClicked"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

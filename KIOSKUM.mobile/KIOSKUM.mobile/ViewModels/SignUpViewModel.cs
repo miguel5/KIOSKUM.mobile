@@ -32,14 +32,17 @@ namespace KIOSKUM.mobile.ViewModels
                 var erros = await API.CriarConta(Conta);
                 List<string> errosStr = new List<string>();
 
-                if (!erros.ListaErros.Any())
+                if (!erros.Erros.Any())
                 {
-                    await page.Navigation.PushModalAsync(new InsertCodePage());
+                    var viewModel = new InsertCodeViewModel();
+                    viewModel.ValidarConta = new ValidarContaPostModel { Email = Conta.Email };
+                    var validarConta = new ValidarContaPostModel { Email = Conta.Email };
+                    await page.Navigation.PushModalAsync(new InsertCodePage(new InsertCodeViewModel {ValidarConta = validarConta }));
                 }
 
                 else
                 {
-                    foreach (int erro in erros.ListaErros)
+                    foreach (int erro in erros.Erros)
                     {
                         errosStr.Add(ErrorMessages._messages[erro]);
                     }

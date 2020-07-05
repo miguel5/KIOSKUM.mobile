@@ -17,13 +17,25 @@
                   HasUnevenRows="True" 
                   IsGroupingEnabled="True"
                   GroupDisplayBinding="{Binding Key}"
+                  ItemTapped="Handle_ItemTapped"
                   SeparatorVisibility="Default" 
                   SeparatorColor="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ImageCell Text="{Binding Nome}" 
-                                       Detail="{Binding Preco, StringFormat='{}{0:} EUR'}" 
-                                       TextColor="Black" DetailColor="Blue"/>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label Text="{Binding Nome}" TextColor="Black"/>
+                                <Label Text="{Binding Preco, StringFormat='{0:0.00} €'}" TextColor="Gray"/>
+                            </StackLayout>
+                            <Button BackgroundColor="White"
+                                    TextColor="Green"
+                                    Text="+"
+                                    FontSize="Large"
+                                    Clicked="AddProdClicked"
+                                    CommandParameter="{Binding .}" />
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
                 
             </ListView.ItemTemplate>

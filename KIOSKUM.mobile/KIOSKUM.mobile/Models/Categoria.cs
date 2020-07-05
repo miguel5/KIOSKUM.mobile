@@ -4,11 +4,10 @@ using System.Text;
 
 namespace KIOSKUM.mobile.Models
 {
-    public class Cliente
+    public class Categoria
     {
+        public int IdCategoria { get; set; }
         public string Nome { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public int NumTelemovel { get; set; }
+        public string URL { get; set; }
     }
 }

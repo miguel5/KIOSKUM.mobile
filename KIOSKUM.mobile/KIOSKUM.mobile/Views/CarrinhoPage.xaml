@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KIOSKUM.mobile.Views.CarrinhoPage"
+             xmlns:local="clr-namespace:KIOSKUM.mobile.CustomElements">
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+            <ListView x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                CachingStrategy="RecycleElement"
+                ItemTapped="Handle_ItemTapped" >
+                <d:ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>First Item</x:String>
+                        <x:String>Second Item</x:String>
+                        <x:String>Third Item</x:String>
+                        <x:String>Fourth Item</x:String>
+                        <x:String>Fifth Item</x:String>
+                        <x:String>Sixth Item</x:String>
+                    </x:Array>
+                </d:ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <StackLayout HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding Nome}" TextColor="Black"/>
+                                    <Label Text="{Binding Obs}" TextColor="Gray"/>
+                                </StackLayout>
+
+                                <local:CustomStepper x:Name="stepper"
+                                                     Text="{Binding Qtd, Mode=TwoWay}"
+                                                     StepperClicked="OnStepperClicked"/>
+
+                                <Label Text="{Binding PrecoTotal, StringFormat='{0:0.00} €'}"
+                                       TextColor="Black"
+                                       VerticalOptions="Center"/>
+
+                                <Button BackgroundColor="Transparent"
+                                        TextColor="Red"
+                                        Text="X"
+                                        FontSize="Large"
+                                        FontAttributes="Bold"
+                                        WidthRequest="40"
+                                        Clicked="RemoverClicked"
+                                        CommandParameter="{Binding .}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Padding="10">
+                <Label Text="Total:" TextColor="Black" FontSize="Medium"/>
+                <Label Text="{Binding Total, StringFormat='{0:0.00} €'}" TextColor="Black" FontSize="Medium"/>
+            </StackLayout>
+            
+            <Label Text="Hora de levantamento:" FontSize="Medium" TextColor="Black"/>
+            <TimePicker x:Name="_timePicker"
+                        Time= "{Binding selectedTime}"
+                        Format="T" />
+
+            <Button Text="Confirmar reserva"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="OnConfirmarReservaClicked"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
