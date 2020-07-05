@@ -9,7 +9,8 @@ namespace KIOSKUM.mobile.Models
         int _qtd;
         double _precoTotal => Qtd * PrecoUnidade;
 
-        public string Id { get; set; }   // Volta a mudar para int!!
+        public int Id { get; set; }
+        public string Nome { get; set; }
         public int Qtd { 
             get { return _qtd; }
             set
@@ -43,7 +44,7 @@ namespace KIOSKUM.mobile.Models
         public override int GetHashCode()
         {
             int hashCode = -1629259719;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Id);
+            hashCode = hashCode * -1521134295 + Id.GetHashCode();
             hashCode = hashCode * -1521134295 + Qtd.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Obs);
             return hashCode;

@@ -6,7 +6,7 @@ namespace KIOSKUM.mobile.Models
 {
     public class Produto
     {
-        public int Id { get; set; }
+        public int IdProduto { get; set; }
         public string Nome { get; set; }
         public string NomeCategoria { get; set; }
         public double Preco { get; set; }
@@ -17,7 +17,7 @@ namespace KIOSKUM.mobile.Models
 
         public Produto(int IdProduto, string Nome, string NomeCategoria, double Preco, IList<string> Ingredientes, IList<string> Alergenios, string URL)
         {
-            this.Id = IdProduto;
+            this.IdProduto = IdProduto;
             this.Nome = Nome;
             this.NomeCategoria = NomeCategoria;
             this.Preco = Preco;
@@ -31,7 +31,7 @@ namespace KIOSKUM.mobile.Models
             unchecked
             {
                 int hash = 3;
-                hash = 37 * hash + Id;
+                hash = 37 * hash + IdProduto;
                 hash = 37 * hash + (Nome == null ? 0 : Nome.GetHashCode());
                 hash = 37 * hash + (NomeCategoria == null ? 0 : NomeCategoria.GetHashCode());
                 hash = 37 * hash + Preco.GetHashCode();
@@ -52,14 +52,14 @@ namespace KIOSKUM.mobile.Models
                 return false;
             }
             Produto produto = (Produto)obj;
-            return Id == produto.Id;
+            return IdProduto == produto.IdProduto;
         }
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Produto\n");
-            sb.Append("- ID : " + Id + "\n");
+            sb.Append("- ID : " + IdProduto + "\n");
             sb.Append("- Nome : " + Nome + "\n");
             sb.Append("- Categoria : " + NomeCategoria + "\n");
             sb.Append("- Preco : " + Preco + "\n");

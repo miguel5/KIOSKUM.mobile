@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using KIOSKUM.mobile.Services;
 using KIOSKUM.mobile.Models;
 using KIOSKUM.mobile.ViewModels;
-using System.Collections.ObjectModel;
 
 namespace KIOSKUM.mobile.Views
 {
@@ -107,18 +103,10 @@ namespace KIOSKUM.mobile.Views
          */
         public void AddProdClicked(Object sender, EventArgs args)
         {
-            /*Button button = (Button)sender;
-            StackLayout stackLayout = (StackLayout)button.Parent;
-            StackLayout stackLayoutChild = (StackLayout)stackLayout.Children[0]; ;
-            Label label = (Label)stackLayoutChild.Children[0];
-
-            String nomeProduto = label.Text;
-            */
-
             Button button = (Button)sender;
             Produto produto = (Produto)button.CommandParameter;
 
-            this.CarrinhoVM.Items.Add(new CarrinhoItem { Id = produto.Nome, Obs = "", Qtd = 1, PrecoUnidade = 3 });
+            this.CarrinhoVM.Items.Add(new CarrinhoItem { Id = produto.IdProduto, Nome = produto.Nome, Obs = "", Qtd = 1, PrecoUnidade = produto.Preco });
         }
     }
 }

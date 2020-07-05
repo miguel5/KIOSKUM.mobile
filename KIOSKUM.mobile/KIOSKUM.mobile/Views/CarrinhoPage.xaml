@@ -29,7 +29,7 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="5">
                                 <StackLayout HorizontalOptions="StartAndExpand">
-                                    <Label Text="{Binding Id}" TextColor="Black"/>
+                                    <Label Text="{Binding Nome}" TextColor="Black"/>
                                     <Label Text="{Binding Obs}" TextColor="Gray"/>
                                 </StackLayout>
 

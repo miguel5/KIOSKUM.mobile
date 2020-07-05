@@ -38,7 +38,8 @@ namespace KIOSKUM.mobile.Views
          */
         public void AddProdClicked(Object sender, EventArgs args)
         {
-            this.CarrinhoVM.Items.Add(new CarrinhoItem { Id = ViewModel.Produto.Nome, Obs = this.ViewModel.Observacoes, Qtd = 1, PrecoUnidade = ViewModel.Produto.Preco });
+            this.CarrinhoVM.Items.Add(new CarrinhoItem { Id = ViewModel.Produto.IdProduto, Nome = ViewModel.Produto.Nome,
+                                                         Obs = this.ViewModel.Observacoes, Qtd = 1, PrecoUnidade = ViewModel.Produto.Preco });
             Navigation.PopModalAsync();
         }
     }

@@ -2,8 +2,6 @@
 using KIOSKUM.mobile.ViewModels;
 using KIOSKUM.mobile.CustomElements;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,8 +18,6 @@ namespace KIOSKUM.mobile.Views
             Title = "Carrinho";
 
             BindingContext = this.ViewModel = viewModel;
-            //BindingContext = ViewModel;
-
         }
 
         /*
@@ -41,9 +37,13 @@ namespace KIOSKUM.mobile.Views
          */
         async public void OnConfirmarReservaClicked(Object sender, EventArgs args)
         {
-            bool answer = await DisplayAlert("Confirmar reserva",
-                                             "Confirmar reserva no valor de " + ViewModel.Total + "€ " + "para as " + _timePicker.Time + "?",
-                                             "Sim", "Não");
+            if (ViewModel.Total == 0)
+                return;
+
+            object[] values = new object[] { ViewModel.Total, _timePicker.Time };
+            string question = string.Format("Confirmar reserva no valor de {0:0.00} € para as {1:hh\\:mm} ?", values);
+
+            bool answer = await DisplayAlert("Confirmar reserva", question, "Sim", "Não");
         }
 
         /*
