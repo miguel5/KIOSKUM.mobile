@@ -17,9 +17,18 @@
                 </StackLayout>
 
                 <StackLayout VerticalOptions="Center">
-                    <Label Text="{Binding ingredientesString}" TextColor="Black" FontSize="Medium" />
-                    <Label Text="Alergénios: Lactose" TextColor="Black" FontSize="Medium" />
-                    <Label Text="Preço: 3.50€" TextColor="Black" FontSize="Medium" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Ingredientes: " TextColor="Black" FontSize="Medium" />
+                        <Label Text="{Binding IngredientesString}" TextColor="Black" FontSize="Medium" />    
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Alergénios: " TextColor="Black" FontSize="Medium" />
+                        <Label Text="{Binding AlergeniosString}" TextColor="Black" FontSize="Medium" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Preço: " TextColor="Black" FontSize="Medium" />
+                        <Label Text="{Binding Produto.Preco, StringFormat='{0:0.00} €'}" TextColor="Black" FontSize="Medium" />
+                    </StackLayout>
                 </StackLayout>
                 
                 <StackLayout Spacing="2">

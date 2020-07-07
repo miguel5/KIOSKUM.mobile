@@ -17,14 +17,10 @@ namespace KIOSKUM.mobile.Views
         public DetalhesProdutoViewModel ViewModel { get; set; }
         public CarrinhoViewModel CarrinhoVM { get; set; }
         
-        public static string IngredientesString { get; set; }
-
         public DetalhesProduto(DetalhesProdutoViewModel viewModel, CarrinhoViewModel carrinhoVM)
         {
             this.ViewModel = viewModel;
             this.CarrinhoVM = carrinhoVM;
-
-            IngredientesString = string.Join(", ", ViewModel.Produto.Ingredientes.ToArray());
 
             BindingContext = ViewModel;
 
